@@ -1,26 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="294d4556-fe2b-410c-ba85-a0bdb334a9c3" name="Default Changelist" comment="" />
+    <list default="true" id="7910b418-ca29-4f02-b7b7-79e1bb5dcd4e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Lineman.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/R_User_Library.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loss_histories/02-24-2020_11-43-01_epochs10_batch10.h5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/loss_histories/02-24-2020_11-45-29_epochs10_batch10.h5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/loss_histories/02-24-2020_11-47-03_epochs50_batch10.h5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/loss_histories/02-24-2020_11-50-51_epochs50_batch10.h5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/loss_histories/02-24-2020_12-03-28_epochs50_batch10.h5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/loss_histories/02-24-2020_12-06-31_epochs50_batch10.h5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/loss_histories/02-24-2020_12-15-16_epochs50_batch10.h5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/loss_histories/02-24-2020_12-17-52_epochs50_batch10.h5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/loss_history.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/02-24-2020_11-43-01_epochs10_batch10.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/02-24-2020_11-45-29_epochs10_batch10.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/02-24-2020_11-47-03_epochs50_batch10.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/02-24-2020_11-50-51_epochs50_batch10.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/02-24-2020_12-03-28_epochs50_batch10.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/02-24-2020_12-06-31_epochs50_batch10.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/02-24-2020_12-15-16_epochs50_batch10.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/02-24-2020_12-17-52_epochs50_batch10.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/net.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tracking_data.csv" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Lineman$net.coverage" NAME="net Coverage Results" MODIFIED="1581964286714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1Y355LmzZqmbQKvQ8O3dHSiPoPq" />
+  <component name="ProjectId" id="1YlGsIG6srZnLgbLKbS25Sd5mV5" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -28,27 +48,33 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/net.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Lineman/net.py" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ian_c\Linesman" />
+    </key>
   </component>
   <component name="RunManager">
-    <configuration name="net" type="PythonConfigurationType" factoryName="Python">
-      <module name="Lineman" />
+    <configuration name="Run net" type="PythonConfigurationType" factoryName="Python">
+      <module name="Linesman" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\ian_c\Lineman\venv\Scripts\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="SDK_HOME" value="C:\Users\ian_c\Anaconda3\envs\Linesman\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lineman" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/net.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\ian_c\Linesman\net.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -58,59 +84,40 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="ServiceViewManager">
-    <option name="showServicesTree" value="false" />
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="294d4556-fe2b-410c-ba85-a0bdb334a9c3" name="Default Changelist" comment="" />
-      <created>1581356805348</created>
+      <changelist id="7910b418-ca29-4f02-b7b7-79e1bb5dcd4e" name="Default Changelist" comment="" />
+      <created>1583509972464</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1581356805348</updated>
-      <workItem from="1582158254344" duration="3024000" />
-      <workItem from="1582161331127" duration="30109000" />
-      <workItem from="1582577770571" duration="381000" />
+      <updated>1583509972464</updated>
+      <workItem from="1583510013086" duration="410000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="WindowStateProjectService">
-    <state width="1237" height="253" key="GridCell.Tab.0.bottom" timestamp="1582568268277">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="253" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1582568268277" />
-    <state width="1237" height="253" key="GridCell.Tab.0.center" timestamp="1582568268277">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="253" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1582568268277" />
-    <state width="1237" height="253" key="GridCell.Tab.0.left" timestamp="1582568268277">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="253" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1582568268277" />
-    <state width="1237" height="253" key="GridCell.Tab.0.right" timestamp="1582568268277">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="253" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1582568268277" />
-    <state x="142" y="0" key="SettingsEditor" timestamp="1582159292926">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1582159292926" />
-    <state x="337" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1582161355703">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1582161355703" />
-    <state x="298" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1582226376785">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="298" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.680@0.0.1280.680" timestamp="1582226376785" />
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/Lineman" />
+    </ignored-roots>
   </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Lineman$net.coverage" NAME="net Coverage Results" MODIFIED="1582568268261" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  <component name="WindowStateProjectService">
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583510110689">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1583510110689" />
+    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1583510108526">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1583510108526" />
+    <state x="142" y="0" key="SettingsEditor" timestamp="1583510434281">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1583510434281" />
   </component>
 </project>
