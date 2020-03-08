@@ -2,35 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7910b418-ca29-4f02-b7b7-79e1bb5dcd4e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Lineman.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/R_User_Library.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/netTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loss_histories/02-24-2020_11-43-01_epochs10_batch10.h5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loss_histories/02-24-2020_11-45-29_epochs10_batch10.h5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loss_histories/02-24-2020_11-47-03_epochs50_batch10.h5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loss_histories/02-24-2020_11-50-51_epochs50_batch10.h5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loss_histories/02-24-2020_12-03-28_epochs50_batch10.h5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loss_histories/02-24-2020_12-06-31_epochs50_batch10.h5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loss_histories/02-24-2020_12-15-16_epochs50_batch10.h5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loss_histories/02-24-2020_12-17-52_epochs50_batch10.h5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loss_history.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/02-24-2020_11-43-01_epochs10_batch10.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/02-24-2020_11-45-29_epochs10_batch10.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/02-24-2020_11-47-03_epochs50_batch10.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/02-24-2020_11-50-51_epochs50_batch10.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/02-24-2020_12-03-28_epochs50_batch10.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/02-24-2020_12-06-31_epochs50_batch10.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/02-24-2020_12-15-16_epochs50_batch10.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/02-24-2020_12-17-52_epochs50_batch10.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/net.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tracking_data.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/net.py" beforeDir="false" afterPath="$PROJECT_DIR$/net.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,18 +25,21 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Lineman/net.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/netTest.py" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ian_c\Linesman" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ian_c\Linesman" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="Run net" type="PythonConfigurationType" factoryName="Python">
+  <component name="RunManager" selected="Python tests.Unittests for netTest.MyTestCase.test_data_shape">
+    <configuration name="Run Net" type="PythonConfigurationType" factoryName="Python">
       <module name="Linesman" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -69,12 +47,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\ian_c\Anaconda3\envs\Linesman\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lineman" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\ian_c\Linesman\net.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/net.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -83,6 +61,69 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="Linesman" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\ian_c\Anaconda3\envs\Linesman\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/net.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Net Tests" type="tests" factoryName="Unittests">
+      <module name="Linesman" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="C:\Users\ian_c\Anaconda3\envs\Linesman\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_pattern" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/netTest.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests for netTest.MyTestCase.test_data_shape" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="Linesman" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;netTest.MyTestCase.test_data_shape&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.Run Net" />
+      <item itemvalue="Python tests.Net Tests" />
+      <item itemvalue="Python tests.Unittests for netTest.MyTestCase.test_data_shape" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.Unittests for netTest.MyTestCase.test_data_shape" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -94,7 +135,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1583509972464</updated>
-      <workItem from="1583510013086" duration="410000" />
+      <workItem from="1583510013086" duration="6600000" />
     </task>
     <servers />
   </component>
@@ -107,17 +148,39 @@
     </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583510110689">
+    <state x="69" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583533155963">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1583510110689" />
-    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1583510108526">
+    <state x="69" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1583533155963" />
+    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1583533154516">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1583510108526" />
+    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1583533154516" />
+    <state width="1237" height="225" key="GridCell.Tab.0.bottom" timestamp="1583686672227">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="225" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1583686672227" />
+    <state width="1237" height="225" key="GridCell.Tab.0.center" timestamp="1583686672226">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="225" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1583686672226" />
+    <state width="1237" height="225" key="GridCell.Tab.0.left" timestamp="1583686672226">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="225" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1583686672226" />
+    <state width="1237" height="225" key="GridCell.Tab.0.right" timestamp="1583686672227">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="225" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1583686672227" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1583510434281">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1583510434281" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Linesman$Net_Tests.coverage" NAME="Net Tests Coverage Results" MODIFIED="1583686236606" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Linesman$Run_net.coverage" NAME="Run net Coverage Results" MODIFIED="1583531587256" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Linesman$Unittests_for_netTest_MyTestCase_test_data_shape.coverage" NAME="Unittests for netTest.MyTestCase.test_data_shape Coverage Results" MODIFIED="1583686672213" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Linesman$Run_Net.coverage" NAME="Run Net Coverage Results" MODIFIED="1583533097716" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
