@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7910b418-ca29-4f02-b7b7-79e1bb5dcd4e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/netTest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data_visualization.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_visualization.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/net.py" beforeDir="false" afterPath="$PROJECT_DIR$/net.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -12,8 +13,21 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jupyter Notebook" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JupyterTrust" id="3d63b220-212d-407a-b304-d072467f164c">
+    <option name="files">
+      <option value="data_visualization.ipynb" />
+    </option>
   </component>
   <component name="ProjectId" id="1YlGsIG6srZnLgbLKbS25Sd5mV5" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -25,20 +39,20 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/netTest.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\ian_c\Linesman" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ian_c\Linesman" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ian_c\Linesman" />
+    </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for netTest.MyTestCase.test_data_shape">
+  <component name="RunManager" selected="Python.Run Net">
     <configuration name="Run Net" type="PythonConfigurationType" factoryName="Python">
       <module name="Linesman" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -83,6 +97,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="playground" type="PythonConfigurationType" factoryName="Python">
+      <module name="Linesman" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\ian_c\Anaconda3\envs\Linesman\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/playground.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Net Tests" type="tests" factoryName="Unittests">
       <module name="Linesman" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -116,6 +152,7 @@
     </configuration>
     <list>
       <item itemvalue="Python.Run Net" />
+      <item itemvalue="Python.playground" />
       <item itemvalue="Python tests.Net Tests" />
       <item itemvalue="Python tests.Unittests for netTest.MyTestCase.test_data_shape" />
     </list>
@@ -135,8 +172,18 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1583509972464</updated>
-      <workItem from="1583510013086" duration="6600000" />
+      <workItem from="1583510013086" duration="7263000" />
+      <workItem from="1583687670448" duration="9626000" />
+      <workItem from="1583724339881" duration="7313000" />
     </task>
+    <task id="LOCAL-00001" summary="Added tests">
+      <created>1583686959042</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1583686959042</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,41 +193,52 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/Lineman" />
     </ignored-roots>
+    <MESSAGE value="Added tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added tests" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="69" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583533155963">
+    <state x="69" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583771322612">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="69" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1583533155963" />
-    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1583533154516">
+    <state x="69" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1583771322612" />
+    <state x="137" y="0" width="1101" height="680" key="CommitChangelistDialog2" timestamp="1583686955005">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1583533154516" />
-    <state width="1237" height="225" key="GridCell.Tab.0.bottom" timestamp="1583686672227">
+    <state x="137" y="0" width="1101" height="680" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1583686955005" />
+    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1583771321633">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="225" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1583686672227" />
-    <state width="1237" height="225" key="GridCell.Tab.0.center" timestamp="1583686672226">
+    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1583771321633" />
+    <state width="1237" height="184" key="GridCell.Tab.0.bottom" timestamp="1583774965136">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="225" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1583686672226" />
-    <state width="1237" height="225" key="GridCell.Tab.0.left" timestamp="1583686672226">
+    <state width="1237" height="184" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1583774965136" />
+    <state width="1237" height="184" key="GridCell.Tab.0.center" timestamp="1583774965136">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="225" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1583686672226" />
-    <state width="1237" height="225" key="GridCell.Tab.0.right" timestamp="1583686672227">
+    <state width="1237" height="184" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1583774965136" />
+    <state width="1237" height="184" key="GridCell.Tab.0.left" timestamp="1583774965136">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="225" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1583686672227" />
+    <state width="1237" height="184" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1583774965136" />
+    <state width="1237" height="184" key="GridCell.Tab.0.right" timestamp="1583774965136">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="184" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1583774965136" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1583510434281">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1583510434281" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1583774589140">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1583774589140" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Linesman$Net_Tests.coverage" NAME="Net Tests Coverage Results" MODIFIED="1583686236606" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Linesman$Run_net.coverage" NAME="Run net Coverage Results" MODIFIED="1583531587256" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Linesman$Unittests_for_netTest_MyTestCase_test_data_shape.coverage" NAME="Unittests for netTest.MyTestCase.test_data_shape Coverage Results" MODIFIED="1583686672213" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Linesman$Run_Net.coverage" NAME="Run Net Coverage Results" MODIFIED="1583533097716" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Linesman$Unittests_for_netTest_MyTestCase_test_data_shape.coverage" NAME="Unittests for netTest.MyTestCase.test_data_shape Coverage Results" MODIFIED="1583687981906" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Linesman$Run_Net.coverage" NAME="Run Net Coverage Results" MODIFIED="1583774965121" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Linesman$playground.coverage" NAME="playground Coverage Results" MODIFIED="1583772658883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
