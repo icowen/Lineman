@@ -1,75 +1,123 @@
 import datetime
 import math
 import os
+import random
 import re
 
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 import tensorflow as tf
 from keras import backend as K
 from tensorflow.keras.utils import plot_model
 
-NUM_EPOCHS = 200
+random.seed(1)
+np.random.seed(2)
+tf.random.set_seed(3)
+tf.keras.backend.set_floatx('float64')
+
+NUM_EPOCHS = 1
 NUM_HIDDEN_NODES = 100
 NUM_OUTPUT_NODES = 1
-BATCH_SIZE = 10
+BATCH_SIZE = 10188
 NUM_TEST_SAMPLES = 500
 LOSS_FUNCTION = 'mse'
-# MODEL = None
-MODEL = 'models/02-24-2020_17-01-52_epochs200_batch10.h5'
+MODEL = None
+# MODEL = 'models/all_plays_get_4_yards.h5'
 X, Y = None, None
+DATA = None
 SAVE = True
 
-time = datetime.datetime.now().strftime('%m-%d-%Y_%H-%M-%S')
-FILENAME = f'{time}_epochs{NUM_EPOCHS}_batch{BATCH_SIZE}'
+TIME = datetime.datetime.now().strftime('%m-%d-%Y_%H-%M-%S')
+FILENAME = f'{TIME}_epochs{NUM_EPOCHS}_batch{BATCH_SIZE}'
 MODEL_SAVE_FILENAME = f'models/{FILENAME}.h5'
 LOSS_PLOT_SAVE_FILENAME = f'loss_histories/{FILENAME}.png'
 
 
 def main():
-    global X, Y
-    X, Y, test_plays_df = get_data()
+    global BATCH_SIZE
+    # get_all_data()
+    x_train_df = get_data_without_last_5_plays()
+    model = get_model(x_train_df)
+    update_net_to_use_prior(model, x_train_df)
+    predict(model, x_train_df)
 
-    model = get_model()
-    data = pd.read_csv('tracking_data.csv')
-    y = data['PlayResult']
-    play_id = 1317
-    # play_id = data["playId"].unique()[0]
-    play = data[data['playId'] == play_id]
-    predict(model, play, '')
-    # magnitudes = []
-    # fig, ax = plt.subplots()
-    # for frame in play["frame.id"].unique():
-    #     test_plays_df = play[play["frame.id"] == frame]
-    #     move_x = test_plays_df.copy()
-    #     move_y = test_plays_df.copy()
-    #     test_plays_df = predict(model, test_plays_df, '')
-    #     move_x["OL_1_x"] = move_x["OL_1_x"].apply(lambda x: x+.01)
-    #     move_x = predict(model, move_x, '_x')
-    #     move_y["OL_1_y"] = move_y["OL_1_y"].apply(lambda x: x+.01)
-    #     move_y = predict(model, move_y, '_y')
-    #     dx = (test_plays_df.iloc[0]["Predicted"] - move_x.iloc[0]["Predicted_x"]) / .01
-    #     dy = (test_plays_df.iloc[0]["Predicted"] - move_y.iloc[0]["Predicted_y"]) / .01
-    #     magnitude = math.sqrt(dx ** 2 + dy ** 2)
-    #     print(f'frame: {frame} dx: {dx} dy: {dy} magnitude: {magnitude}')
-    #     magnitudes.append(magnitude)
-    #     ax.scatter(frame, magnitude)
-    # print(f'magnitudes: {magnitudes}')
-    # plt.show()
+    print(x_train_df.head().to_string())
+    train_model(model, x_train_df)
+    result = predict(model, x_train_df)
+    print(result.head().to_string())
+
+    # DATA["Prediction"] = model.predict(DATA.drop(["PlayResult", "playId", "NetNoise", "Prediction"], axis=1))
+    # DATA["Prediction"] = DATA.apply(lambda x: x["Prediction"] - x["NetNoise"], axis=1)
+    # print(DATA.head().to_string())
+    # play_id = DATA["playId"].unique()[-2]
+    # get_S_vs_frame_graph_for_play(model, DATA, play_id)
+    # get_rating_vs_frame_for_play_id(model, DATA, play_id, .01)
+
+
+def update_net_to_use_prior(model, x_train, prior=4):
+    keep_cols = [c for c in x_train.columns if re.search(r'(Off|OL|Def|frame)', c)]
+
+    initial_net = tf.keras.models.clone_model(model)
+    initial_weights = model.get_weights()
+    initial_net.set_weights(initial_weights)
+    initial_predictions = initial_net.predict(x_train.drop([c for c in x_train.columns if c not in keep_cols], axis=1))
+    x_train["NetNoise"] = initial_predictions - prior
+    model.compile(loss=mse_loss_with_prior(x_train["NetNoise"]))
+
+
 ''' Try using prior of 4 yards every play'''
 
-def predict(model, test_plays_df, x_or_y):
-    test_plays_add_1_to_all_x = test_plays_df.copy()
-    # test_plays_add_1_to_all_x = test_plays_add_1_to_all_x.apply(lambda x: )
-    if 'PlayResult' in test_plays_df.columns:
-        test_plays_df = test_plays_df.drop(['PlayResult', 'Unnamed: 0', 'playId'], axis=1)
-    test_plays_df[f"Predicted{x_or_y}"] = model.predict(test_plays_df)
-    # print(test_plays_df.to_string())
+
+def get_rating_vs_frame_for_play_id(model, df, play_id, delta):
+    print(f'Generating rating vs frame for play {play_id}.')
+    magnitudes = []
+    play = df[df["playId"] == play_id]
     fig, ax = plt.subplots()
-    ax.scatter(test_plays_df["frame.id"], test_plays_df["Predicted"])
-    plt.show()
-    return test_plays_df
-    # plot_predictions(test_plays_df)
+    for frame_id in play["frame.id"].unique():
+        frame = play[play["frame.id"] == frame_id]
+        original_frame = predict(model, frame)
+
+        move_x = frame.copy()
+        move_x["OL_1_x"] = move_x["OL_1_x"].apply(lambda x: x + delta)
+        move_x = predict(model, move_x, '_x')
+
+        move_y = frame.copy()
+        move_y["OL_1_y"] = move_y["OL_1_y"].apply(lambda x: x + delta)
+        move_y = predict(model, move_y, '_y')
+
+        dx = (original_frame.iloc[0]["Predicted"] - move_x.iloc[0]["Predicted_x"]) / delta
+        dy = (original_frame.iloc[0]["Predicted"] - move_y.iloc[0]["Predicted_y"]) / delta
+        magnitude = math.sqrt(dx ** 2 + dy ** 2)
+        magnitudes.append(magnitude)
+        ax.scatter(frame_id, magnitude, color='b')
+    print(f'magnitudes: {magnitudes}')
+    ax.set_title(f'Rating vs FrameId for Play {play_id}')
+    plt.xlabel('Frame Id')
+    plt.ylabel('Rating')
+    plt.savefig(f'rating_vs_frame_graphs/{TIME}_play{play_id}_delta{delta}.png')
+
+
+def predict(model, df, x_or_y=''):
+    keep_cols = [c for c in df.columns if re.search(r'(Off|OL|Def|frame)', c)]
+    label = f"Predicted{x_or_y}"
+    df[label] = model.predict(df.drop([c for c in df.columns if c not in keep_cols], axis=1))
+    df[label] = df.apply(lambda x: x[label] - x["NetNoise"], axis=1)
+    return df
+
+
+def get_S_vs_frame_graph_for_play(model, df, play_id):
+    print(f'Generating S vs Frame graph for play {play_id}.')
+    df = df[df["playId"] == play_id]
+    if 'PlayResult' in df.columns:
+        df = df.drop(['PlayResult', 'playId'], axis=1)
+    df[f"Predicted"] = model.predict(df)
+    fig, ax = plt.subplots()
+    ax.scatter(df["frame.id"], df["Predicted"])
+    ax.set_title(f'S vs FrameId for Play {play_id}')
+    plt.xlabel('Frame Id')
+    plt.ylabel('Predicted Yards Gained (ie. S)')
+    plt.savefig(f'predicted_vs_frame_graphs/{TIME}_play{play_id}.png')
 
 
 def plot_predictions(test_plays_df):
@@ -87,17 +135,23 @@ def plot_predictions(test_plays_df):
     plt.show()
 
 
-def get_data():
-    x = pd.read_csv('tracking_data.csv')
-    x.dropna(inplace=True)
-    last_5_play_ids = x["playId"].unique()[-5:]
-    last_5_plays_df = x.loc[x["playId"].isin(last_5_play_ids)]
-    x = x.loc[~x["playId"].isin(last_5_play_ids)]   # Remove last 5 plays
-    y = x['PlayResult']
-    x.drop(['PlayResult', 'Unnamed: 0', 'playId'], axis=1, inplace=True)
-    x = x.values
-    y = y.values
-    return x, y, last_5_plays_df
+def get_all_data():
+    global DATA
+    data = pd.read_csv('tracking_data.csv')
+    data.dropna(inplace=True)
+    data.drop(['Unnamed: 0'], axis=1, inplace=True)
+    DATA = data
+    x_train = DATA.copy()
+    return x_train
+
+
+def get_data_without_last_5_plays():
+    global DATA
+    get_all_data()
+    last_5_play_ids = DATA["playId"].unique()[-5:]
+    DATA = DATA.loc[~DATA["playId"].isin(last_5_play_ids)]
+    x_train = DATA.copy()
+    return x_train
 
 
 def move_players(play_id, frame_id, df, ol_x_shift=0, ol_y_shift=0):
@@ -175,8 +229,12 @@ def plot_loss(history):
     plt.savefig(LOSS_PLOT_SAVE_FILENAME)
 
 
-def train_model(model, x, y):
-    history = model.fit(x, y,
+def train_model(model, df):
+    global BATCH_SIZE
+    BATCH_SIZE = len(df.index)
+    keep_cols = [c for c in df.columns if re.search(r'(Off|OL|Def|frame)', c)]
+
+    history = model.fit(df.drop([c for c in df.columns if c not in keep_cols], axis=1), df["PlayResult"],
                         validation_split=.2,
                         epochs=NUM_EPOCHS,
                         batch_size=BATCH_SIZE)
@@ -202,16 +260,28 @@ def crps_loss_with_prior(avg_of_play_no_noise):
     return crps
 
 
-def get_model():
+def mse_loss_with_prior(avg_of_play_no_noise):
+    def mse(y_true, y_pred):
+        y_true = tf.dtypes.cast(y_true, tf.float64)
+        return K.mean(K.square((y_pred - avg_of_play_no_noise) + K.square(y_true)))
+
+    return mse
+
+
+def get_model(x_train):
+    keep_cols = [c for c in x_train.columns if re.search(r'(Off|OL|Def|frame)', c)]
+    input_shape = (x_train.drop([c for c in x_train.columns if c not in keep_cols], axis=1).shape[1], )
+    output_shape = (len(x_train.index), )
     if MODEL:
         return tf.keras.models.load_model(MODEL)
     model = tf.keras.Sequential()
-    model.add(tf.keras.layers.Dense(NUM_HIDDEN_NODES, input_shape=(X[0].shape[0],), activation=tf.nn.sigmoid))
+    model.add(tf.keras.layers.Dense(NUM_HIDDEN_NODES, input_shape=input_shape, activation=tf.nn.sigmoid))
     model.add(tf.keras.layers.Dense(NUM_OUTPUT_NODES, activation=tf.keras.activations.linear))
     model.compile(optimizer='adam',
-                  loss=LOSS_FUNCTION,
+                  # loss=LOSS_FUNCTION,
+                  loss=mse_loss_with_prior(K.placeholder(shape=output_shape, dtype='float64')),
                   metrics=['acc'])
-    train_model(model, X, Y)
+
     return model
 
 

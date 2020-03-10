@@ -8,7 +8,7 @@ import net
 
 class DataTransformation(unittest.TestCase):
     def setUp(self):
-        self.x, self.y, self.last_5_df = net.get_data()
+        self.x, self.y, self.last_5_df = net.get_all_data()
 
     @mock.patch('net.train_model')
     @mock.patch('net.plot_loss')
