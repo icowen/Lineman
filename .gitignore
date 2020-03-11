@@ -5,3 +5,5 @@ loss_histories/
 football_fields/
 predicted_vs_frame_graphs/
 rating_vs_frame_graphs/
+playground.py
+graphs/
