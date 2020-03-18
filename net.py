@@ -16,13 +16,14 @@ np.random.seed(2)
 tf.random.set_seed(3)
 tf.keras.backend.set_floatx('float32')
 
-NUM_EPOCHS = 20
+NUM_EPOCHS = 100
 NUM_HIDDEN_NODES = 100
 NUM_OUTPUT_NODES = 1
-BATCH_SIZE = 10188
+BATCH_SIZE = 460297
 MODEL = None
 # MODEL = 'models/03-10-2020_20-36-47_epochs100_batch10188.h5'
 DATA = None
+DATA_FILENAME = 'fin_70.csv'
 SAVE = True
 KEEP_REGEX = r'(Off|OL|Def|frame)'
 
@@ -41,6 +42,7 @@ def main():
     initial_model = get_initial_net(model)
     update_net_to_use_prior(model, initial_model, x_train_df, prior)
 
+    print(f'x_train_df.shape: {x_train_df.shape}')
     train_model(model, x_train_df)
     result = predict(model, initial_model, prior, x_test_df)
     print(result.to_string())
@@ -65,7 +67,7 @@ def get_data_without_last_5_plays():
 
 def get_all_data():
     global DATA
-    data = pd.read_csv('tracking_data.csv', dtype='float32')
+    data = pd.read_csv(DATA_FILENAME, dtype='float32')
     data.dropna(inplace=True)
     data.drop(['Unnamed: 0'], axis=1, inplace=True)
     DATA = data
@@ -99,6 +101,7 @@ def get_model(x_train):
 def train_model(model, df):
     global BATCH_SIZE
     BATCH_SIZE = len(df.index)
+    # BATCH_SIZE = 1000
     keep_cols = [c for c in df.columns if re.search(KEEP_REGEX, c)]
 
     history = model.fit(df.drop([c for c in df.columns if c not in keep_cols], axis=1), df["PlayResult"],
