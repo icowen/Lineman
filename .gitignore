@@ -6,4 +6,5 @@ football_fields/
 predicted_vs_frame_graphs/
 rating_vs_frame_graphs/
 playground.py
-graphs/
+fin_70.csv
+tracking_data.csv
