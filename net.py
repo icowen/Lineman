@@ -16,7 +16,7 @@ np.random.seed(2)
 tf.random.set_seed(3)
 tf.keras.backend.set_floatx('float32')
 
-NUM_EPOCHS = 20
+NUM_EPOCHS = 50
 NUM_HIDDEN_NODES = 100
 NUM_OUTPUT_NODES = 1
 BATCH_SIZE = 460297
