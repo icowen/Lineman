@@ -16,7 +16,7 @@ np.random.seed(2)
 tf.random.set_seed(3)
 tf.keras.backend.set_floatx('float32')
 
-NUM_EPOCHS = 20
+NUM_EPOCHS = 50
 NUM_HIDDEN_NODES = 100
 NUM_OUTPUT_NODES = 1
 BATCH_SIZE = 460297
@@ -42,17 +42,9 @@ def main():
     initial_model = get_initial_net(model)
     update_net_to_use_prior(model, initial_model, x_train_df, prior)
 
-<<<<<<< HEAD
-    result = predict(model, initial_model, prior, x_test_df)
-    print(result.iloc[-5:].to_string())
-    train_model(model, x_train_df)
-    result = predict(model, initial_model, prior, x_test_df)
-    print(result.iloc[-5:].to_string())
-=======
     train_model(model, x_train_df)
     result = predict(model, initial_model, prior, x_test_df)
     # print(result.to_string())
->>>>>>> 977d576e797ce42639b3038a95edadb0f55bdba7
 
     for play_id in x_test_df["playId"].unique():
         fig, (ax1, ax2) = plt.subplots(2)
