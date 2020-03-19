@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7910b418-ca29-4f02-b7b7-79e1bb5dcd4e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/README" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.png" beforeDir="false" afterPath="$PROJECT_DIR$/model.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/net.py" beforeDir="false" afterPath="$PROJECT_DIR$/net.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -185,6 +183,7 @@
       <workItem from="1583724339881" duration="35332000" />
       <workItem from="1584283700556" duration="376000" />
       <workItem from="1584574076264" duration="7631000" />
+      <workItem from="1584633075861" duration="6765000" />
     </task>
     <task id="LOCAL-00001" summary="Added tests">
       <created>1583686959042</created>
@@ -221,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584575601376</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="This should work on GPU now... maybe">
+      <created>1584633142296</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1584633142296</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,7 +242,8 @@
     <MESSAGE value="Implemented a mse loss function that uses a prior of 4 yards for each frame. Net now predicts 4 yards without any training." />
     <MESSAGE value="Can't run on my commputer... trying on gpu" />
     <MESSAGE value="Updated .gitignore. Hopefully this uses gitlfs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated .gitignore. Hopefully this uses gitlfs" />
+    <MESSAGE value="This should work on GPU now... maybe" />
+    <option name="LAST_COMMIT_MESSAGE" value="This should work on GPU now... maybe" />
   </component>
   <component name="WindowStateProjectService">
     <state x="69" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583771322612">
@@ -247,10 +254,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="403" y="144" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1584628413028" />
-    <state x="137" y="0" width="1101" height="680" key="CommitChangelistDialog2" timestamp="1584633140356">
+    <state x="137" y="0" width="1101" height="680" key="CommitChangelistDialog2" timestamp="1584656223243">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="137" y="0" width="1101" height="680" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1584633140356" />
+    <state x="137" y="0" width="1101" height="680" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1584656223243" />
     <state x="121" y="51" key="DiffContextDialog" timestamp="1584575562806">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -287,10 +294,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1584283963851" />
-    <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583893239735">
+    <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584656234125">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1583893239735" />
+    <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1584656234125" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1583861459949">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
