@@ -16,7 +16,7 @@ np.random.seed(2)
 tf.random.set_seed(3)
 tf.keras.backend.set_floatx('float32')
 
-NUM_EPOCHS = 100
+NUM_EPOCHS = 20
 NUM_HIDDEN_NODES = 100
 NUM_OUTPUT_NODES = 1
 BATCH_SIZE = 460297
@@ -42,9 +42,11 @@ def main():
     initial_model = get_initial_net(model)
     update_net_to_use_prior(model, initial_model, x_train_df, prior)
 
+    result = predict(model, initial_model, prior, x_test_df)
+    print(result.iloc[-5:].to_string())
     train_model(model, x_train_df)
     result = predict(model, initial_model, prior, x_test_df)
-    # print(result.to_string())
+    print(result.iloc[-5:].to_string())
 
     for play_id in x_test_df["playId"].unique():
         fig, (ax1, ax2) = plt.subplots(2)
@@ -91,8 +93,9 @@ def get_model(x_train):
     model.add(tf.keras.layers.Dense(NUM_HIDDEN_NODES, input_shape=input_shape, activation=tf.nn.sigmoid))
     model.add(tf.keras.layers.Dense(NUM_OUTPUT_NODES, activation=tf.keras.activations.linear))
     model.compile(optimizer='adam',
-                  loss=mse_loss_with_prior(K.placeholder(shape=output_shape, dtype='float32')),
-                  metrics=['acc'])
+                  #loss=mse_loss_with_prior(K.placeholder(shape=output_shape, dtype='float32')),
+                  loss=mse_loss_with_prior([]),
+		  metrics=['acc'])
 
     return model
 
@@ -106,9 +109,10 @@ def train_model(model, df):
     history = model.fit(df.drop([c for c in df.columns if c not in keep_cols], axis=1), df["PlayResult"],
                         validation_split=.2,
                         epochs=NUM_EPOCHS,
-                        batch_size=BATCH_SIZE)
+			# batch_size=BATCH_SIZE,
+                        batch_size=100)
     if SAVE:
-        plot_model(model, to_file='model.png', show_layer_names=True, show_shapes=True, expand_nested=True)
+        #plot_model(model, to_file='model.png', show_layer_names=True, show_shapes=True, expand_nested=True)
         plot_loss(history)
         model.save(MODEL_SAVE_FILENAME)
     return model
