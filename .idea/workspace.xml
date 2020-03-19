@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7910b418-ca29-4f02-b7b7-79e1bb5dcd4e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.png" beforeDir="false" afterPath="$PROJECT_DIR$/model.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/net.py" beforeDir="false" afterPath="$PROJECT_DIR$/net.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -183,7 +184,7 @@
       <workItem from="1583687670448" duration="9626000" />
       <workItem from="1583724339881" duration="35332000" />
       <workItem from="1584283700556" duration="376000" />
-      <workItem from="1584574076264" duration="1424000" />
+      <workItem from="1584574076264" duration="7631000" />
     </task>
     <task id="LOCAL-00001" summary="Added tests">
       <created>1583686959042</created>
@@ -206,7 +207,21 @@
       <option name="project" value="LOCAL" />
       <updated>1583862172400</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Can't run on my commputer... trying on gpu">
+      <created>1584575535730</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1584575535730</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Updated .gitignore. Hopefully this uses gitlfs">
+      <created>1584575601376</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1584575601376</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,17 +234,23 @@
     <MESSAGE value="Added tests" />
     <MESSAGE value="New code for plotting frame vs S prediction as well as moving a OL's position and calculating effect of that change." />
     <MESSAGE value="Implemented a mse loss function that uses a prior of 4 yards for each frame. Net now predicts 4 yards without any training." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented a mse loss function that uses a prior of 4 yards for each frame. Net now predicts 4 yards without any training." />
+    <MESSAGE value="Can't run on my commputer... trying on gpu" />
+    <MESSAGE value="Updated .gitignore. Hopefully this uses gitlfs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated .gitignore. Hopefully this uses gitlfs" />
   </component>
   <component name="WindowStateProjectService">
     <state x="69" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583771322612">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="69" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1583771322612" />
-    <state x="137" y="0" width="1101" height="680" key="CommitChangelistDialog2" timestamp="1584575533202">
+    <state x="403" y="144" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584628413028">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="137" y="0" width="1101" height="680" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1584575533202" />
+    <state x="403" y="144" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1584628413028" />
+    <state x="137" y="0" width="1101" height="680" key="CommitChangelistDialog2" timestamp="1584633140356">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="137" y="0" width="1101" height="680" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1584633140356" />
     <state x="121" y="51" key="DiffContextDialog" timestamp="1584575562806">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -238,30 +259,30 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1583771321633" />
-    <state width="1237" height="183" key="GridCell.Tab.0.bottom" timestamp="1584575447964">
+    <state width="1237" height="272" key="GridCell.Tab.0.bottom" timestamp="1584630050899">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="183" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1584575447964" />
-    <state width="1237" height="183" key="GridCell.Tab.0.center" timestamp="1584575447963">
+    <state width="1237" height="272" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1584630050899" />
+    <state width="1237" height="272" key="GridCell.Tab.0.center" timestamp="1584630050899">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="183" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1584575447963" />
-    <state width="1237" height="183" key="GridCell.Tab.0.left" timestamp="1584575447963">
+    <state width="1237" height="272" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1584630050899" />
+    <state width="1237" height="272" key="GridCell.Tab.0.left" timestamp="1584630050899">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="183" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1584575447963" />
-    <state width="1237" height="183" key="GridCell.Tab.0.right" timestamp="1584575447964">
+    <state width="1237" height="272" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1584630050899" />
+    <state width="1237" height="272" key="GridCell.Tab.0.right" timestamp="1584630050899">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="183" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1584575447964" />
+    <state width="1237" height="272" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1584630050899" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1583510434281">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1583510434281" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1584575562819">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1584633146119">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1584575562819" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1584633146119" />
     <state x="337" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1584283963851">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -279,7 +300,7 @@
     <SUITE FILE_PATH="coverage/Linesman$Net_Tests.coverage" NAME="Net Tests Coverage Results" MODIFIED="1583686236606" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Linesman$Run_net.coverage" NAME="Run net Coverage Results" MODIFIED="1583531587256" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Linesman$Unittests_for_netTest_MyTestCase_test_data_shape.coverage" NAME="Unittests for netTest.MyTestCase.test_data_shape Coverage Results" MODIFIED="1583687981906" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Linesman$Run_Net.coverage" NAME="Run Net Coverage Results" MODIFIED="1584575447942" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Linesman$playground.coverage" NAME="playground Coverage Results" MODIFIED="1583772658883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Linesman$Run_Net.coverage" NAME="Run Net Coverage Results" MODIFIED="1584628854625" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Linesman$playground.coverage" NAME="playground Coverage Results" MODIFIED="1584577925251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

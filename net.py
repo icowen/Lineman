@@ -25,7 +25,7 @@ MODEL = None
 DATA = None
 DATA_FILENAME = 'fin_70.csv'
 SAVE = True
-KEEP_REGEX = r'(Off|OL|Def|frame)'
+KEEP_REGEX = r'(Off|OL|Def|frame|Match)'
 
 TIME = datetime.datetime.now().strftime('%m-%d-%Y_%H-%M-%S')
 FILENAME = f'{TIME}_epochs{NUM_EPOCHS}_batch{BATCH_SIZE}'
@@ -42,14 +42,13 @@ def main():
     initial_model = get_initial_net(model)
     update_net_to_use_prior(model, initial_model, x_train_df, prior)
 
-    print(f'x_train_df.shape: {x_train_df.shape}')
     train_model(model, x_train_df)
     result = predict(model, initial_model, prior, x_test_df)
-    print(result.to_string())
+    # print(result.to_string())
 
     for play_id in x_test_df["playId"].unique():
         fig, (ax1, ax2) = plt.subplots(2)
-        get_rating_vs_frame_for_play_id(ax1, model, initial_model, x_test_df, prior, play_id, 'OL_1', .01)
+        get_rating_vs_frame_for_play_id(ax1, model, initial_model, x_test_df, prior, play_id, 'OL_LG', .01)
         get_S_vs_frame_graph_for_play(ax2, model, initial_model, x_test_df, prior, play_id)
         plt.tight_layout()
         plt.savefig(f'graphs/{TIME}_play{play_id}.png')
