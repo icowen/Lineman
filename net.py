@@ -9,7 +9,6 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 from keras import backend as K
-from tensorflow.keras.utils import plot_model
 
 random.seed(1)
 np.random.seed(2)
@@ -28,7 +27,7 @@ SAVE = True
 KEEP_REGEX = r'(Off|OL|Def|frame|Match)'
 
 TIME = datetime.datetime.now().strftime('%m-%d-%Y_%H-%M-%S')
-FILENAME = f'{TIME}_epochs{NUM_EPOCHS}_batch{BATCH_SIZE}'
+FILENAME = f'{TIME}_epochs{NUM_EPOCHS}'
 MODEL_SAVE_FILENAME = f'models/{FILENAME}.h5'
 LOSS_PLOT_SAVE_FILENAME = f'loss_histories/{FILENAME}.png'
 
@@ -47,12 +46,13 @@ def main():
     # print(result.to_string())
 
     for play_id in x_test_df["playId"].unique():
-        fig, (ax1, ax2) = plt.subplots(2)
-        get_rating_vs_frame_for_play_id(ax1, model, initial_model, x_test_df, prior, play_id, 'OL_LG', .01)
-        get_S_vs_frame_graph_for_play(ax2, model, initial_model, x_test_df, prior, play_id)
-        plt.tight_layout()
-        plt.savefig(f'graphs/{TIME}_play{play_id}.png')
-        plt.close()
+        for player_id in ["OL_C", "OL_LG", "OL_LT", "OL_RG", "OL_RT"]:
+            fig, (ax1, ax2) = plt.subplots(2)
+            get_rating_vs_frame_for_play_id(ax1, model, initial_model, x_test_df, prior, play_id, player_id, .01)
+            get_S_vs_frame_graph_for_play(ax2, model, initial_model, x_test_df, prior, play_id)
+            plt.tight_layout()
+            plt.savefig(f'graphs/{TIME}_play{play_id}_player{player_id}.png')
+            plt.close()
 
 
 def get_data_without_last_5_plays():
@@ -91,9 +91,9 @@ def get_model(x_train):
     model.add(tf.keras.layers.Dense(NUM_HIDDEN_NODES, input_shape=input_shape, activation=tf.nn.sigmoid))
     model.add(tf.keras.layers.Dense(NUM_OUTPUT_NODES, activation=tf.keras.activations.linear))
     model.compile(optimizer='adam',
-                  #loss=mse_loss_with_prior(K.placeholder(shape=output_shape, dtype='float32')),
+                  # loss=mse_loss_with_prior(K.placeholder(shape=output_shape, dtype='float32')),
                   loss=mse_loss_with_prior([]),
-		  metrics=['acc'])
+                  metrics=['acc'])
 
     return model
 
@@ -107,11 +107,11 @@ def train_model(model, df):
     history = model.fit(df.drop([c for c in df.columns if c not in keep_cols], axis=1), df["PlayResult"],
                         validation_split=.2,
                         epochs=NUM_EPOCHS,
-			# batch_size=BATCH_SIZE,
+                        # batch_size=BATCH_SIZE,
                         batch_size=100)
     if SAVE:
-        #plot_model(model, to_file='model.png', show_layer_names=True, show_shapes=True, expand_nested=True)
-        plot_loss(history)
+        # plot_model(model, to_file='model.png', show_layer_names=True, show_shapes=True, expand_nested=True)
+        # plot_loss(history)
         model.save(MODEL_SAVE_FILENAME)
     return model
 
@@ -181,7 +181,7 @@ def get_rating_vs_frame_for_play_id(ax, model, initial_model, df, prior, play_id
         magnitude = math.sqrt(dx ** 2 + dy ** 2)
         magnitudes.append(magnitude)
         ax.scatter(frame_id, magnitude, color='b')
-    ax.set_title(f'Rating vs FrameId for Play {play_id}')
+    ax.set_title(f'Rating vs FrameId for Play {play_id} and Player {player_label}')
     plt.xlabel('Frame Id')
     plt.ylabel('Rating')
 
