@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7910b418-ca29-4f02-b7b7-79e1bb5dcd4e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/findBestNetConfiguration.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/02-24-2020_11-43-01_epochs10_batch10.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/02-24-2020_11-45-29_epochs10_batch10.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/02-24-2020_11-47-03_epochs50_batch10.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/02-24-2020_11-50-51_epochs50_batch10.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/02-24-2020_12-03-28_epochs50_batch10.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/02-24-2020_12-06-31_epochs50_batch10.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/02-24-2020_12-15-16_epochs50_batch10.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/02-24-2020_12-17-52_epochs50_batch10.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/net.py" beforeDir="false" afterPath="$PROJECT_DIR$/net.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findBestNetConfiguration.py" beforeDir="false" afterPath="$PROJECT_DIR$/findBestNetConfiguration.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +213,7 @@
       <workItem from="1585256692896" duration="9000" />
       <workItem from="1585594153930" duration="4431000" />
       <workItem from="1585684786341" duration="68000" />
-      <workItem from="1585689027580" duration="4441000" />
+      <workItem from="1585689027580" duration="4771000" />
     </task>
     <task id="LOCAL-00001" summary="Added tests">
       <created>1583686959042</created>
@@ -280,7 +271,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584715712043</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added file to test for best configuration.">
+      <created>1585760553006</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1585760553006</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,7 +295,8 @@
     <MESSAGE value="Updated .gitignore. Hopefully this uses gitlfs" />
     <MESSAGE value="This should work on GPU now... maybe" />
     <MESSAGE value="Generates graphs for all players now." />
-    <option name="LAST_COMMIT_MESSAGE" value="Generates graphs for all players now." />
+    <MESSAGE value="Added file to test for best configuration." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added file to test for best configuration." />
   </component>
   <component name="WindowStateProjectService">
     <state x="2024" y="3" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585757405892">
@@ -309,10 +308,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="403" y="144" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1584628413028" />
-    <state x="2126" y="3" width="1101" height="680" key="CommitChangelistDialog2" timestamp="1584715710486">
+    <state x="2126" y="3" width="1101" height="680" key="CommitChangelistDialog2" timestamp="1585760550797">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2126" y="3" key="CommitChangelistDialog2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1584715710486" />
+    <state x="2126" y="3" key="CommitChangelistDialog2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1585760550797" />
     <state x="137" y="0" width="1101" height="680" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1584656254086" />
     <state x="121" y="51" key="DiffContextDialog" timestamp="1584575562806">
       <screen x="0" y="0" width="1280" height="680" />
@@ -347,10 +346,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1583510434281" />
-    <state x="2270" y="116" key="Vcs.Push.Dialog.v2" timestamp="1584715722621">
+    <state x="2270" y="116" key="Vcs.Push.Dialog.v2" timestamp="1585760556859">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2270" y="116" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1584715722621" />
+    <state x="2270" y="116" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1585760556859" />
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1584633146119" />
     <state x="2426" y="255" key="com.intellij.ide.util.TipDialog" timestamp="1585684841006">
       <screen x="1920" y="3" width="1920" height="1040" />

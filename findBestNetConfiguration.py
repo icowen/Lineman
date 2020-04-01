@@ -92,15 +92,13 @@ def get_model(x_train, num__hidden_layers, num_hidden_nodes):
 
 def train_model(model, df, num_epochs, model_filename, loss_filename):
     keep_cols = [c for c in df.columns if re.search(KEEP_REGEX, c)]
-    callbacks = ModelCheckpoint(model_filename, monitor='val_loss', save_best_only=True)
 
     history = model.fit(df.drop([c for c in df.columns if c not in keep_cols], axis=1), df["PlayResult"],
                         validation_split=.2,
                         epochs=num_epochs,
-                        batch_size=100,
-                        callbacks=[callbacks])
+                        batch_size=100)
     plot_loss(history, loss_filename)
-    # model.save(model_filename)
+    model.save(model_filename)
     return model, history
 
 
