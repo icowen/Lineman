@@ -26,7 +26,7 @@ def main():
     num_epochs = 100
     best_loss = {"loss": sys.maxsize}
     for num_layers in range(1, 3):
-        for num_hidden_nodes in range(5, 100, 5):
+        for num_hidden_nodes in range(40, 100, 5):
             print(f'Building net with {num_layers} layers and {num_hidden_nodes} nodes.')
             time = datetime.datetime.now().strftime('%m-%d-%Y_%H-%M-%S')
             filename = f'{time}_layers{num_layers}_nodes{num_hidden_nodes}'
