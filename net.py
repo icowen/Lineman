@@ -104,8 +104,6 @@ def get_model(x_train):
 
 
 def train_model(model, df):
-    global BATCH_SIZE
-    BATCH_SIZE = len(df.index)
     keep_cols = [c for c in df.columns if re.search(KEEP_REGEX, c)]
 
     history = model.fit(df.drop([c for c in df.columns if c not in keep_cols], axis=1), df["PlayResult"],
