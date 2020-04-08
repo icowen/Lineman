@@ -23,7 +23,7 @@ KEEP_REGEX = r'(Off|OL|Def|frame|Match)'
 def main():
     x_train_df = get_data_without_last_5_plays()
     prior = 4
-    num_epochs = 100
+    num_epochs = 30
     best_loss = {"loss": sys.maxsize}
     num_layers = 2
     for num_hidden_nodes in range(5, 100, 5):

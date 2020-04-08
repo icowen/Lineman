@@ -1,24 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7910b418-ca29-4f02-b7b7-79e1bb5dcd4e" name="Default Changelist" comment="">
+    <list default="true" id="7910b418-ca29-4f02-b7b7-79e1bb5dcd4e" name="Default Changelist" comment="Removed ModelCheckpoint.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/findBestNetConfiguration.py" beforeDir="false" afterPath="$PROJECT_DIR$/findBestNetConfiguration.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loss_histories/04-01-2020_12-19-49_layers1_nodes5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loss_histories/04-01-2020_12-53-59_layers1_nodes10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loss_histories/04-01-2020_13-27-40_layers1_nodes15.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loss_histories/04-01-2020_14-01-36_layers1_nodes20.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loss_histories/04-01-2020_14-35-34_layers1_nodes25.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loss_histories/04-01-2020_15-09-26_layers1_nodes30.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loss_histories/04-01-2020_15-42-55_layers1_nodes35.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loss_histories/04-01-2020_16-17-04_layers1_nodes40.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loss_histories/04-01-2020_16-51-06_layers1_nodes45.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loss_histories/04-01-2020_17-24-46_layers1_nodes50.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loss_histories/04-01-2020_17-58-35_layers1_nodes55.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loss_histories/04-01-2020_18-31-55_layers1_nodes60.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loss_histories/04-01-2020_19-05-29_layers1_nodes65.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loss_histories/04-01-2020_19-39-26_layers1_nodes70.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loss_histories/04-01-2020_20-13-21_layers1_nodes75.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,7 +224,7 @@
       <workItem from="1586201381597" duration="1527000" />
       <workItem from="1586212027789" duration="170000" />
       <workItem from="1586221868999" duration="11000" />
-      <workItem from="1586359536522" duration="289000" />
+      <workItem from="1586359536522" duration="942000" />
     </task>
     <task id="LOCAL-00001" summary="Added tests">
       <created>1583686959042</created>
@@ -318,7 +303,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586186839516</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Removed ModelCheckpoint.">
+      <created>1586359837301</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1586359837301</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -349,10 +341,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="403" y="144" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1584628413028" />
-    <state x="2126" y="3" width="1101" height="680" key="CommitChangelistDialog2" timestamp="1586186837402">
+    <state x="2126" y="3" width="1101" height="680" key="CommitChangelistDialog2" timestamp="1586359843043">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2126" y="3" key="CommitChangelistDialog2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586186837402" />
+    <state x="2126" y="3" key="CommitChangelistDialog2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586359843043" />
     <state x="137" y="0" width="1101" height="680" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1584656254086" />
     <state x="121" y="51" key="DiffContextDialog" timestamp="1584575562806">
       <screen x="0" y="0" width="1280" height="680" />
@@ -387,10 +379,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1583510434281" />
-    <state x="2270" y="116" key="Vcs.Push.Dialog.v2" timestamp="1586186842719">
+    <state x="2270" y="116" key="Vcs.Push.Dialog.v2" timestamp="1586359857928">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2270" y="116" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586186842719" />
+    <state x="2270" y="116" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586359857928" />
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1584633146119" />
     <state x="2576" y="347" width="598" height="352" key="com.intellij.ide.util.TipDialog" timestamp="1586359540214">
       <screen x="1920" y="3" width="1920" height="1040" />
