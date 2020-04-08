@@ -25,28 +25,28 @@ def main():
     prior = 4
     num_epochs = 100
     best_loss = {"loss": sys.maxsize}
-    for num_layers in range(1, 3):
-        for num_hidden_nodes in range(40, 100, 5):
-            print(f'Building net with {num_layers} layers and {num_hidden_nodes} nodes.')
-            time = datetime.datetime.now().strftime('%m-%d-%Y_%H-%M-%S')
-            filename = f'{time}_layers{num_layers}_nodes{num_hidden_nodes}'
-            model_filename = f'models/{filename}.h5'
-            loss_filename = f'loss_histories/{filename}.png'
-            model = get_model(x_train_df, num_layers, num_hidden_nodes)
-            initial_model = get_initial_net(model, filename)
-            update_net_to_use_prior(model, initial_model, x_train_df, prior)
-            model, history = train_model(model, x_train_df, num_epochs, model_filename, loss_filename)
-            val_loss = history.history['val_loss']
-            min_val_loss = min(val_loss)
-            min_val_loss_index = val_loss.index(min_val_loss)
-            if min_val_loss < best_loss['loss']:
-                best_loss['loss'] = min_val_loss
-                best_loss['epoch'] = min_val_loss_index
-                best_loss['num_hidden_nodes'] = num_hidden_nodes
-                best_loss['num_layers'] = num_layers
-                best_loss['model_filename'] = model_filename
-                best_loss['loss_filename'] = loss_filename
-            print(best_loss)
+    num_layers = 2
+    for num_hidden_nodes in range(5, 100, 5):
+        print(f'Building net with {num_layers} layers and {num_hidden_nodes} nodes.')
+        time = datetime.datetime.now().strftime('%m-%d-%Y_%H-%M-%S')
+        filename = f'{time}_layers{num_layers}_nodes{num_hidden_nodes}'
+        model_filename = f'models/{filename}.h5'
+        loss_filename = f'loss_histories/{filename}.png'
+        model = get_model(x_train_df, num_layers, num_hidden_nodes)
+        initial_model = get_initial_net(model, filename)
+        update_net_to_use_prior(model, initial_model, x_train_df, prior)
+        model, history = train_model(model, x_train_df, num_epochs, model_filename, loss_filename)
+        val_loss = history.history['val_loss']
+        min_val_loss = min(val_loss)
+        min_val_loss_index = val_loss.index(min_val_loss)
+        if min_val_loss < best_loss['loss']:
+            best_loss['loss'] = min_val_loss
+            best_loss['epoch'] = min_val_loss_index
+            best_loss['num_hidden_nodes'] = num_hidden_nodes
+            best_loss['num_layers'] = num_layers
+            best_loss['model_filename'] = model_filename
+            best_loss['loss_filename'] = loss_filename
+        print(best_loss)
     print(best_loss)
 
 
@@ -96,7 +96,7 @@ def train_model(model, df, num_epochs, model_filename, loss_filename):
     history = model.fit(df.drop([c for c in df.columns if c not in keep_cols], axis=1), df["PlayResult"],
                         validation_split=.2,
                         epochs=num_epochs,
-                        batch_size=100)
+                        batch_size=1000)
     plot_loss(history, loss_filename)
     model.save(model_filename)
     return model, history
