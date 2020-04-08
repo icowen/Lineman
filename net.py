@@ -16,9 +16,10 @@ tf.random.set_seed(3)
 tf.keras.backend.set_floatx('float32')
 
 NUM_EPOCHS = 30
-NUM_HIDDEN_NODES = 100
-NUM_OUTPUT_NODES = 1 
-BATCH_SIZE = 460297
+NUM_HIDDEN_NODES = 25
+NUM_OUTPUT_NODES = 1
+NUM_LAYERS = 2
+BATCH_SIZE = 1000
 MODEL = None
 # MODEL = 'models/03-10-2020_20-36-47_epochs100_batch10188.h5'
 DATA = None
@@ -38,24 +39,22 @@ def main():
     x_train_df = get_data_without_last_5_plays()
     x_test_df = DATA.loc[~DATA["playId"].isin(x_train_df["playId"].unique())]
     prior = 4
-    for i in range(1, 3):
-        for j in range(5, 100, 5):
-            model = get_model(x_train_df)
-            initial_model = get_initial_net(model)
-            update_net_to_use_prior(model, initial_model, x_train_df, prior)
-            train_model(model, x_train_df)
+    model = get_model(x_train_df)
+    initial_model = get_initial_net(model)
+    update_net_to_use_prior(model, initial_model, x_train_df, prior)
+    train_model(model, x_train_df)
 
     # result = predict(model, initial_model, prior, x_test_df)
     # print(result.to_string())
 
-    # for play_id in x_test_df["playId"].unique():
-    #     for player_id in ["OL_C", "OL_LG", "OL_LT", "OL_RG", "OL_RT"]:
-    #         fig, (ax1, ax2) = plt.subplots(2)
-    #         get_rating_vs_frame_for_play_id(ax1, model, initial_model, x_test_df, prior, play_id, player_id, .01)
-    #         get_S_vs_frame_graph_for_play(ax2, model, initial_model, x_test_df, prior, play_id)
-    #         plt.tight_layout()
-    #         plt.savefig(f'graphs/{TIME}_play{play_id}_player{player_id}.png')
-    #         plt.close()
+    for play_id in x_test_df["playId"].unique():
+        for player_id in ["OL_C", "OL_LG", "OL_LT", "OL_RG", "OL_RT"]:
+            fig, (ax1, ax2) = plt.subplots(2)
+            get_rating_vs_frame_for_play_id(ax1, model, initial_model, x_test_df, prior, play_id, player_id, .01)
+            get_S_vs_frame_graph_for_play(ax2, model, initial_model, x_test_df, prior, play_id)
+            plt.tight_layout()
+            plt.savefig(f'graphs/{TIME}_play{play_id}_player{player_id}.png')
+            plt.close()
 
 
 def get_data_without_last_5_plays():
@@ -93,6 +92,8 @@ def get_model(x_train):
         return tf.keras.models.load_model(MODEL)
     model = tf.keras.Sequential()
     model.add(tf.keras.layers.Dense(NUM_HIDDEN_NODES, input_shape=input_shape, activation=tf.nn.sigmoid))
+    for i in range(NUM_LAYERS - 1):
+        model.add(tf.keras.layers.Dense(NUM_HIDDEN_NODES, activation=tf.nn.sigmoid))
     model.add(tf.keras.layers.Dense(NUM_OUTPUT_NODES, activation=tf.keras.activations.linear))
     model.compile(optimizer='adam',
                   # loss=mse_loss_with_prior(K.placeholder(shape=output_shape, dtype='float32')),
@@ -105,17 +106,15 @@ def get_model(x_train):
 def train_model(model, df):
     global BATCH_SIZE
     BATCH_SIZE = len(df.index)
-    # BATCH_SIZE = 1000
     keep_cols = [c for c in df.columns if re.search(KEEP_REGEX, c)]
 
     history = model.fit(df.drop([c for c in df.columns if c not in keep_cols], axis=1), df["PlayResult"],
                         validation_split=.2,
                         epochs=NUM_EPOCHS,
-                        # batch_size=BATCH_SIZE,
-                        batch_size=100)
+                        batch_size=BATCH_SIZE)
     if SAVE:
         # plot_model(model, to_file='model.png', show_layer_names=True, show_shapes=True, expand_nested=True)
-        plot_loss(history)
+        # plot_loss(history)
         model.save(MODEL_SAVE_FILENAME)
     return model
 
