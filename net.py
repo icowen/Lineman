@@ -15,7 +15,7 @@ np.random.seed(2)
 tf.random.set_seed(3)
 tf.keras.backend.set_floatx('float32')
 
-NUM_EPOCHS = 30
+NUM_EPOCHS = 10
 NUM_HIDDEN_NODES = 25
 NUM_OUTPUT_NODES = 1
 NUM_LAYERS = 2
