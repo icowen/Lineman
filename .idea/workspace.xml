@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7910b418-ca29-4f02-b7b7-79e1bb5dcd4e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/net.py" beforeDir="false" afterPath="$PROJECT_DIR$/net.py" afterDir="false" />
-    </list>
+    <list default="true" id="7910b418-ca29-4f02-b7b7-79e1bb5dcd4e" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -226,7 +223,7 @@
       <workItem from="1586221868999" duration="11000" />
       <workItem from="1586359536522" duration="5873000" />
       <workItem from="1586439116894" duration="619000" />
-      <workItem from="1586794775847" duration="12505000" />
+      <workItem from="1586794775847" duration="12746000" />
     </task>
     <task id="LOCAL-00001" summary="Added tests">
       <created>1583686959042</created>
@@ -361,7 +358,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586807031344</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Get sum of score for all players">
+      <created>1586807673033</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1586807673033</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -400,7 +404,8 @@
     <MESSAGE value="-Using 10 epochs and 25 nodes in 2 layers.&#10;-Using new data.&#10;-Generates score graph for each player.&#10;-Saves end df to scores.csv.&#10;-Removed unneeded files." />
     <MESSAGE value="Squaring previous prediction - new prediction when calculating player score" />
     <MESSAGE value="Squaring the whole score" />
-    <option name="LAST_COMMIT_MESSAGE" value="Squaring the whole score" />
+    <MESSAGE value="Get sum of score for all players" />
+    <option name="LAST_COMMIT_MESSAGE" value="Get sum of score for all players" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2024" y="3" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585757405892">
@@ -416,10 +421,10 @@
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
     <state x="2610" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586804851421" />
-    <state x="2330" y="118" width="1101" height="680" key="CommitChangelistDialog2" timestamp="1586807636136">
+    <state x="2330" y="118" width="1101" height="680" key="CommitChangelistDialog2" timestamp="1586807670109">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2330" y="118" key="CommitChangelistDialog2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586807636136" />
+    <state x="2330" y="118" key="CommitChangelistDialog2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586807670109" />
     <state x="137" y="0" width="1101" height="680" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1584656254086" />
     <state x="2102" y="81" width="1024" height="572" key="DiffContextDialog" timestamp="1586389040901">
       <screen x="1920" y="3" width="1920" height="1040" />
@@ -455,10 +460,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1583510434281" />
-    <state x="2270" y="116" key="Vcs.Push.Dialog.v2" timestamp="1586807033927">
+    <state x="2270" y="116" key="Vcs.Push.Dialog.v2" timestamp="1586807675525">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2270" y="116" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586807033927" />
+    <state x="2270" y="116" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586807675525" />
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1584633146119" />
     <state x="337" y="165" width="598" height="352" key="com.intellij.ide.util.TipDialog" timestamp="1586794985848">
       <screen x="0" y="0" width="1280" height="680" />

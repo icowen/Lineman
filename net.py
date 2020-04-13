@@ -72,7 +72,7 @@ def get_all_data():
     global DATA
     if DATA_FILENAME == 'netdata.csv':
         data = pd.read_csv(DATA_FILENAME, dtype='float32',
-                           converters={'PassResult': lambda x: 'R' if pd.isna(x) else x})[:2000]
+                           converters={'PassResult': lambda x: 'R' if pd.isna(x) else x})
         data.dropna(inplace=True)
         data.drop(['X'], axis=1, inplace=True)
     if DATA_FILENAME == "fin_70.csv":
