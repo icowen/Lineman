@@ -199,7 +199,7 @@ def get_rating_vs_frame_for_play_id(ax, model, initial_model, df, prior, play_id
 def get_player_score(x, magnitude, df, play_id, frame_id):
     previous_pred = df.loc[(df["playId"] == play_id) & (df["frame.id"] == (frame_id - 1)), "Predicted"].iloc[0]
     pred = x["Predicted"]
-    score = magnitude * (previous_pred - pred)
+    score = magnitude * (previous_pred - pred) ** 2
     return score
 
 
