@@ -55,6 +55,7 @@ def main():
             plt.tight_layout()
             plt.savefig(f'graphs/{TIME}_play{play_id}_player{player_id}.png')
             plt.close()
+            x_test_df.loc[x_test_df["playId"] == play_id, f"{player_id}_score_sum"] = x_test_df.loc[x_test_df["playId"] == play_id, f"{player_id}_score"].sum()
     x_test_df.to_csv('scores.csv')
 
 
@@ -71,7 +72,7 @@ def get_all_data():
     global DATA
     if DATA_FILENAME == 'netdata.csv':
         data = pd.read_csv(DATA_FILENAME, dtype='float32',
-                           converters={'PassResult': lambda x: 'R' if pd.isna(x) else x})
+                           converters={'PassResult': lambda x: 'R' if pd.isna(x) else x})[:2000]
         data.dropna(inplace=True)
         data.drop(['X'], axis=1, inplace=True)
     if DATA_FILENAME == "fin_70.csv":
