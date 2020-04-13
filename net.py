@@ -23,9 +23,9 @@ BATCH_SIZE = 1000
 MODEL = None
 # MODEL = 'models/03-10-2020_20-36-47_epochs100_batch10188.h5'
 DATA = None
-DATA_FILENAME = 'fin_70.csv'
+DATA_FILENAME = 'netdata.csv'
 SAVE = True
-KEEP_REGEX = r'(Off|OL|Def|frame|Match)'
+KEEP_REGEX = r'(Off|OL_(<?(C|LG|RG|RT|LT)_(x|y))$|Def|frame|Match)'
 
 TIME = datetime.datetime.now().strftime('%m-%d-%Y_%H-%M-%S')
 FILENAME = f'{TIME}_epochs{NUM_EPOCHS}'
@@ -35,26 +35,27 @@ LOSS_PLOT_SAVE_FILENAME = f'loss_histories/{FILENAME}.png'
 
 def main():
     global BATCH_SIZE, NUM_HIDDEN_NODES, NUM_EPOCHS
-    # get_all_data()
     x_train_df = get_data_without_last_5_plays()
     x_test_df = DATA.loc[~DATA["playId"].isin(x_train_df["playId"].unique())]
+
     prior = 4
     model = get_model(x_train_df)
     initial_model = get_initial_net(model)
     update_net_to_use_prior(model, initial_model, x_train_df, prior)
     train_model(model, x_train_df)
 
-    # result = predict(model, initial_model, prior, x_test_df)
-    # print(result.to_string())
+    x_test_df = predict(model, initial_model, prior, x_test_df)
 
     for play_id in x_test_df["playId"].unique():
         for player_id in ["OL_C", "OL_LG", "OL_LT", "OL_RG", "OL_RT"]:
-            fig, (ax1, ax2) = plt.subplots(2)
+            fig, (ax1, ax2, ax3) = plt.subplots(3)
             get_rating_vs_frame_for_play_id(ax1, model, initial_model, x_test_df, prior, play_id, player_id, .01)
-            get_S_vs_frame_graph_for_play(ax2, model, initial_model, x_test_df, prior, play_id)
+            get_S_vs_frame_graph_for_play(ax2, x_test_df, play_id)
+            get_score_per_frame_for_play(ax3, x_test_df, play_id, player_id)
             plt.tight_layout()
             plt.savefig(f'graphs/{TIME}_play{play_id}_player{player_id}.png')
             plt.close()
+    x_test_df.to_csv('scores.csv')
 
 
 def get_data_without_last_5_plays():
@@ -68,9 +69,15 @@ def get_data_without_last_5_plays():
 
 def get_all_data():
     global DATA
-    data = pd.read_csv(DATA_FILENAME, dtype='float32')
-    data.dropna(inplace=True)
-    data.drop(['Unnamed: 0'], axis=1, inplace=True)
+    if DATA_FILENAME == 'netdata.csv':
+        data = pd.read_csv(DATA_FILENAME, dtype='float32',
+                           converters={'PassResult': lambda x: 'R' if pd.isna(x) else x})
+        data.dropna(inplace=True)
+        data.drop(['X'], axis=1, inplace=True)
+    if DATA_FILENAME == "fin_70.csv":
+        data = pd.read_csv(DATA_FILENAME, dtype='float32')
+        data.dropna(inplace=True)
+        data.drop(['Unnamed: 0'], axis=1, inplace=True)
     DATA = data
     x_train = DATA.copy()
     return x_train
@@ -87,7 +94,6 @@ def get_initial_net(model):
 def get_model(x_train):
     keep_cols = [c for c in x_train.columns if re.search(KEEP_REGEX, c)]
     input_shape = (x_train.drop([c for c in x_train.columns if c not in keep_cols], axis=1).shape[1],)
-    output_shape = (len(x_train.index),)
     if MODEL:
         return tf.keras.models.load_model(MODEL)
     model = tf.keras.Sequential()
@@ -96,7 +102,6 @@ def get_model(x_train):
         model.add(tf.keras.layers.Dense(NUM_HIDDEN_NODES, activation=tf.nn.sigmoid))
     model.add(tf.keras.layers.Dense(NUM_OUTPUT_NODES, activation=tf.keras.activations.linear))
     model.compile(optimizer='adam',
-                  # loss=mse_loss_with_prior(K.placeholder(shape=output_shape, dtype='float32')),
                   loss=mse_loss_with_prior([]),
                   metrics=['acc'])
 
@@ -111,8 +116,7 @@ def train_model(model, df):
                         epochs=NUM_EPOCHS,
                         batch_size=BATCH_SIZE)
     if SAVE:
-        # plot_model(model, to_file='model.png', show_layer_names=True, show_shapes=True, expand_nested=True)
-        # plot_loss(history)
+        plot_loss(history)
         model.save(MODEL_SAVE_FILENAME)
     return model
 
@@ -162,12 +166,11 @@ def plot_predictions(test_plays_df):
 
 
 def get_rating_vs_frame_for_play_id(ax, model, initial_model, df, prior, play_id, player_label, delta):
-    print(f'Generating rating vs frame for play {play_id}.')
+    print(f'Generating rating vs frame for {player_label} on play {play_id}.')
     magnitudes = []
     play = df[df["playId"] == play_id]
     for frame_id in play["frame.id"].unique():
         frame_df = play[play["frame.id"] == frame_id]
-        original_frame_df = predict(model, initial_model, prior, frame_df)
 
         move_x_df = frame_df.copy()
         move_x_df[f"{player_label}_x"] = move_x_df[f"{player_label}_x"].apply(lambda x: x + delta)
@@ -177,27 +180,49 @@ def get_rating_vs_frame_for_play_id(ax, model, initial_model, df, prior, play_id
         move_y_df[f"{player_label}_y"] = move_y_df[f"{player_label}_y"].apply(lambda x: x + delta)
         move_y_df = predict(model, initial_model, prior, move_y_df, '_y')
 
-        dx = (original_frame_df.iloc[0]["Predicted"] - move_x_df.iloc[0]["Predicted_x"]) / delta
-        dy = (original_frame_df.iloc[0]["Predicted"] - move_y_df.iloc[0]["Predicted_y"]) / delta
+        dx = (frame_df.iloc[0]["Predicted"] - move_x_df.iloc[0]["Predicted_x"]) / delta
+        dy = (frame_df.iloc[0]["Predicted"] - move_y_df.iloc[0]["Predicted_y"]) / delta
         magnitude = math.sqrt(dx ** 2 + dy ** 2)
         magnitudes.append(magnitude)
         ax.scatter(frame_id, magnitude, color='b')
+        df.loc[(df["playId"] == play_id) & (df["frame.id"] == frame_id), f'{player_label}_leverage'] = magnitude
+        if frame_id != 1:
+            df.loc[(df["playId"] == play_id) & (df["frame.id"] == frame_id), f"{player_label}_score"] = df.loc[
+                (df["playId"] == play_id) & (df["frame.id"] == frame_id)].apply(
+                lambda x: get_player_score(x, magnitude, df, play_id, frame_id), axis=1)
     ax.set_title(f'Rating vs FrameId for Play {play_id} and Player {player_label}')
     ax.set_ylim(0, 1)
-    plt.xlabel('Frame Id')
+    plt.xlabel('Frame ID')
     plt.ylabel('Rating')
 
 
-def get_S_vs_frame_graph_for_play(ax, model, initial_model, df, prior, play_id):
+def get_player_score(x, magnitude, df, play_id, frame_id):
+    previous_pred = df.loc[(df["playId"] == play_id) & (df["frame.id"] == (frame_id - 1)), "Predicted"].iloc[0]
+    pred = x["Predicted"]
+    score = magnitude * (previous_pred - pred)
+    return score
+
+
+def get_S_vs_frame_graph_for_play(ax, df, play_id):
     print(f'Generating S vs Frame graph for play {play_id}.')
     df = df[df["playId"] == play_id]
-    df = predict(model, initial_model, prior, df)
     ax.scatter(df["frame.id"], df["Predicted"], label='Predicted (ie. S)', c='red')
     ax.scatter(df["frame.id"], df["PlayResult"], label='Actual', c='blue')
     ax.set_title(f'S vs FrameId for Play {play_id}')
     ax.legend()
-    plt.xlabel('Frame Id')
+    plt.xlabel('Frame ID')
     plt.ylabel('Yards Gained (ie. S)')
+
+
+def get_score_per_frame_for_play(ax, df, play_id, player_id):
+    print(f'Generating score graph for play {play_id} and player {player_id}.')
+    df = df[df["playId"] == play_id]
+    ax.scatter(df["frame.id"], df[f"{player_id}_score"], label='Predicted (ie. S)', c='red')
+    ax.set_title(f'{player_id} Score vs FrameId for Play {play_id}')
+    ax.legend()
+    ax.set_ylim(0, 1)
+    plt.xlabel('Frame ID')
+    plt.ylabel('Score')
 
 
 def plot_loss(history):
