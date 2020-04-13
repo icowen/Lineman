@@ -225,7 +225,7 @@
       <workItem from="1586221868999" duration="11000" />
       <workItem from="1586359536522" duration="5873000" />
       <workItem from="1586439116894" duration="619000" />
-      <workItem from="1586794775847" duration="10559000" />
+      <workItem from="1586794775847" duration="11923000" />
     </task>
     <task id="LOCAL-00001" summary="Added tests">
       <created>1583686959042</created>
@@ -346,7 +346,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586804964041</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Squaring previous prediction - new prediction when calculating player score">
+      <created>1586805797369</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1586805797369</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -383,7 +390,8 @@
     <MESSAGE value="Changed batch size" />
     <MESSAGE value="10 epochs" />
     <MESSAGE value="-Using 10 epochs and 25 nodes in 2 layers.&#10;-Using new data.&#10;-Generates score graph for each player.&#10;-Saves end df to scores.csv.&#10;-Removed unneeded files." />
-    <option name="LAST_COMMIT_MESSAGE" value="-Using 10 epochs and 25 nodes in 2 layers.&#10;-Using new data.&#10;-Generates score graph for each player.&#10;-Saves end df to scores.csv.&#10;-Removed unneeded files." />
+    <MESSAGE value="Squaring previous prediction - new prediction when calculating player score" />
+    <option name="LAST_COMMIT_MESSAGE" value="Squaring previous prediction - new prediction when calculating player score" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2024" y="3" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585757405892">
@@ -399,10 +407,10 @@
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
     <state x="2610" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586804851421" />
-    <state x="2126" y="3" width="1101" height="680" key="CommitChangelistDialog2" timestamp="1586804961483">
+    <state x="2330" y="118" width="1101" height="680" key="CommitChangelistDialog2" timestamp="1586805794286">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2126" y="3" key="CommitChangelistDialog2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586804961483" />
+    <state x="2330" y="118" key="CommitChangelistDialog2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586805794286" />
     <state x="137" y="0" width="1101" height="680" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1584656254086" />
     <state x="2102" y="81" width="1024" height="572" key="DiffContextDialog" timestamp="1586389040901">
       <screen x="1920" y="3" width="1920" height="1040" />
@@ -438,20 +446,20 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1583510434281" />
-    <state x="2270" y="116" key="Vcs.Push.Dialog.v2" timestamp="1586804968409">
+    <state x="2270" y="116" key="Vcs.Push.Dialog.v2" timestamp="1586805820353">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2270" y="116" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586804968409" />
+    <state x="2270" y="116" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586805820353" />
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1584633146119" />
     <state x="337" y="165" width="598" height="352" key="com.intellij.ide.util.TipDialog" timestamp="1586794985848">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="337" y="165" width="598" height="352" key="com.intellij.ide.util.TipDialog/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586794985848" />
     <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1584664976812" />
-    <state x="2595" y="398" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586805483828">
+    <state x="2595" y="398" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586806208756">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2595" y="398" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586805483828" />
+    <state x="2595" y="398" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586806208756" />
     <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1584656404251" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1583861459949">
       <screen x="0" y="0" width="1280" height="680" />
