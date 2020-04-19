@@ -56,7 +56,7 @@ def main():
             plt.savefig(f'graphs/{TIME}_play{play_id}_player{player_id}.png')
             plt.close()
             x_test_df.loc[x_test_df["playId"] == play_id, f"{player_id}_score_sum"] = x_test_df.loc[x_test_df["playId"] == play_id, f"{player_id}_score"].sum()
-    x_test_df.groupby('playId').first().loc[:, [c for c in x_test_df if re.match(r'.*score_sum.*', c)]].to_csv('scores.csv')
+    x_test_df.groupby('playId').first().loc[:, [c for c in x_test_df if re.match(r'.*(score_sum|playId).*', c)]].to_csv('scores.csv')
 
 
 def get_data_without_last_5_plays():
@@ -221,7 +221,7 @@ def get_score_per_frame_for_play(ax, df, play_id, player_id):
     ax.scatter(df["frame.id"], df[f"{player_id}_score"], label='Predicted (ie. S)', c='red')
     ax.set_title(f'{player_id} Score vs FrameId for Play {play_id}')
     ax.legend()
-    ax.set_ylim(0, 1)
+    ax.set_ylim(-2, 7)
     plt.xlabel('Frame ID')
     plt.ylabel('Score')
 
