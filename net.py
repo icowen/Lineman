@@ -42,22 +42,21 @@ def main():
     model = get_model(x_train_df)
     initial_model = get_initial_net(model)
     update_net_to_use_prior(model, initial_model, x_train_df, prior)
-    # train_model(model, x_train_df)
+    train_model(model, x_train_df)
 
     x_test_df = predict(model, initial_model, prior, x_test_df)
-    print(x_test_df.head().to_string())
 
-    # for play_id in x_test_df["playId"].unique():
-    #     for player_id in ["OL_C", "OL_LG", "OL_LT", "OL_RG", "OL_RT"]:
-    #         fig, (ax1, ax2, ax3) = plt.subplots(3)
-    #         get_rating_vs_frame_for_play_id(ax1, model, initial_model, x_test_df, prior, play_id, player_id, .01)
-    #         get_S_vs_frame_graph_for_play(ax2, x_test_df, play_id)
-    #         get_score_per_frame_for_play(ax3, x_test_df, play_id, player_id)
-    #         plt.tight_layout()
-    #         plt.savefig(f'graphs/{TIME}_play{play_id}_player{player_id}.png')
-    #         plt.close()
-    #         x_test_df.loc[x_test_df["playId"] == play_id, f"{player_id}_score_sum"] = x_test_df.loc[x_test_df["playId"] == play_id, f"{player_id}_score"].sum()
-    # x_test_df.to_csv('scores.csv')
+    for play_id in x_test_df["playId"].unique():
+        for player_id in ["OL_C", "OL_LG", "OL_LT", "OL_RG", "OL_RT"]:
+            fig, (ax1, ax2, ax3) = plt.subplots(3)
+            get_rating_vs_frame_for_play_id(ax1, model, initial_model, x_test_df, prior, play_id, player_id, .01)
+            get_S_vs_frame_graph_for_play(ax2, x_test_df, play_id)
+            get_score_per_frame_for_play(ax3, x_test_df, play_id, player_id)
+            plt.tight_layout()
+            plt.savefig(f'graphs/{TIME}_play{play_id}_player{player_id}.png')
+            plt.close()
+            x_test_df.loc[x_test_df["playId"] == play_id, f"{player_id}_score_sum"] = x_test_df.loc[x_test_df["playId"] == play_id, f"{player_id}_score"].sum()
+    x_test_df.groupby('playId').first().loc[:, [c for c in x_test_df if re.match(r'.*score_sum.*', c)]].to_csv('scores.csv')
 
 
 def get_data_without_last_5_plays():
@@ -169,7 +168,7 @@ def plot_predictions(test_plays_df):
 
 def get_rating_vs_frame_for_play_id(ax, model, initial_model, df, prior, play_id, player_label, delta):
     print(f'Generating rating vs frame for {player_label} on play {play_id}.')
-    magnitudes = []
+    leverages = []
     play = df[df["playId"] == play_id]
     for frame_id in play["frame.id"].unique():
         frame_df = play[play["frame.id"] == frame_id]
@@ -184,24 +183,24 @@ def get_rating_vs_frame_for_play_id(ax, model, initial_model, df, prior, play_id
 
         dx = (frame_df.iloc[0]["Predicted"] - move_x_df.iloc[0]["Predicted_x"]) / delta
         dy = (frame_df.iloc[0]["Predicted"] - move_y_df.iloc[0]["Predicted_y"]) / delta
-        magnitude = math.sqrt(dx ** 2 + dy ** 2)
-        magnitudes.append(magnitude)
-        ax.scatter(frame_id, magnitude, color='b')
-        df.loc[(df["playId"] == play_id) & (df["frame.id"] == frame_id), f'{player_label}_leverage'] = magnitude
+        leverage = math.sqrt(dx ** 2 + dy ** 2)
+        leverages.append(leverage)
+        ax.scatter(frame_id, leverage, color='b')
+        df.loc[(df["playId"] == play_id) & (df["frame.id"] == frame_id), f'{player_label}_leverage'] = leverage
         if frame_id != 1:
             df.loc[(df["playId"] == play_id) & (df["frame.id"] == frame_id), f"{player_label}_score"] = df.loc[
                 (df["playId"] == play_id) & (df["frame.id"] == frame_id)].apply(
-                lambda x: get_player_score(x, magnitude, df, play_id, frame_id), axis=1)
+                lambda x: get_player_score(x, leverage, df, play_id, frame_id), axis=1)
     ax.set_title(f'Rating vs FrameId for Play {play_id} and Player {player_label}')
     ax.set_ylim(0, 1)
     plt.xlabel('Frame ID')
     plt.ylabel('Rating')
 
 
-def get_player_score(x, magnitude, df, play_id, frame_id):
+def get_player_score(x, leverage, df, play_id, frame_id):
     previous_pred = df.loc[(df["playId"] == play_id) & (df["frame.id"] == (frame_id - 1)), "Predicted"].iloc[0]
     pred = x["Predicted"]
-    score = (magnitude * (previous_pred - pred)) ** 2
+    score = leverage * (pred - previous_pred)
     return score
 
 
