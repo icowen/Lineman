@@ -221,7 +221,7 @@ def get_score_per_frame_for_play(ax, df, play_id, player_id):
     ax.scatter(df["frame.id"], df[f"{player_id}_score"], label='Predicted (ie. S)', c='red')
     ax.set_title(f'{player_id} Score vs FrameId for Play {play_id}')
     ax.legend()
-    ax.set_ylim(-2, 7)
+    ax.set_ylim(-.75, .75)
     plt.xlabel('Frame ID')
     plt.ylabel('Score')
 
