@@ -1,7 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7910b418-ca29-4f02-b7b7-79e1bb5dcd4e" name="Default Changelist" comment="" />
+    <list default="true" id="7910b418-ca29-4f02-b7b7-79e1bb5dcd4e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Linesman.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Linesman.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_visualization.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/data_visualization.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-24-07_play2928.0_playerOL_C.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-24-07_play2928.0_playerOL_LG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-24-07_play2928.0_playerOL_LT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-24-07_play2928.0_playerOL_RG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-24-07_play2928.0_playerOL_RT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-24-07_play2991.0_playerOL_C.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-24-07_play2991.0_playerOL_LG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-24-07_play2991.0_playerOL_LT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-24-07_play2991.0_playerOL_RG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-24-07_play2991.0_playerOL_RT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-24-07_play3248.0_playerOL_C.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-24-07_play3248.0_playerOL_LG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-24-07_play3248.0_playerOL_LT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-24-07_play3248.0_playerOL_RG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-24-07_play3248.0_playerOL_RT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-24-07_play3502.0_playerOL_C.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-24-07_play3502.0_playerOL_LG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-24-07_play3502.0_playerOL_LT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-24-07_play3502.0_playerOL_RG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-24-07_play3502.0_playerOL_RT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-24-07_play3609.0_playerOL_C.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-24-07_play3609.0_playerOL_LG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-24-07_play3609.0_playerOL_LT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-24-07_play3609.0_playerOL_RG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-24-07_play3609.0_playerOL_RT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-44-10_play2928.0_playerOL_C.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-44-10_play2928.0_playerOL_LG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-44-10_play2928.0_playerOL_LT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-44-10_play2928.0_playerOL_RG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-44-10_play2928.0_playerOL_RT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-44-10_play2991.0_playerOL_C.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-44-10_play2991.0_playerOL_LG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-44-10_play2991.0_playerOL_LT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-44-10_play2991.0_playerOL_RG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-44-10_play2991.0_playerOL_RT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-44-10_play3248.0_playerOL_C.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-44-10_play3248.0_playerOL_LG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-44-10_play3248.0_playerOL_LT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-44-10_play3248.0_playerOL_RG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-44-10_play3248.0_playerOL_RT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-44-10_play3502.0_playerOL_C.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-44-10_play3502.0_playerOL_LG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-44-10_play3502.0_playerOL_LT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-44-10_play3502.0_playerOL_RG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-44-10_play3502.0_playerOL_RT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-44-10_play3609.0_playerOL_C.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-44-10_play3609.0_playerOL_LG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-44-10_play3609.0_playerOL_LT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-44-10_play3609.0_playerOL_RG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphs/04-13-2020_14-44-10_play3609.0_playerOL_RT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/net.py" beforeDir="false" afterPath="$PROJECT_DIR$/net.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,11 +82,7 @@
       </set>
     </option>
   </component>
-  <component name="JupyterTrust" id="3d63b220-212d-407a-b304-d072467f164c">
-    <option name="files">
-      <option value="data_visualization.ipynb" />
-    </option>
-  </component>
+  <component name="JupyterTrust" id="3d63b220-212d-407a-b304-d072467f164c" />
   <component name="ProjectId" id="1YlGsIG6srZnLgbLKbS25Sd5mV5" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -42,20 +94,43 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/findBestNetConfiguration.py" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JSON" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/animate_play.py" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.notebooks.jupyter.connections.configuration.JupyterServerConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ian_c\Linesman" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ian_c\Linesman" />
     </key>
   </component>
   <component name="RunManager" selected="Python.Run Net">
+    <configuration name="Animate" type="PythonConfigurationType" factoryName="Python">
+      <module name="Linesman" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\ian_c\Anaconda3\envs\Linesman\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/animate_play.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Find best net configuration" type="PythonConfigurationType" factoryName="Python">
       <module name="Linesman" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -176,6 +251,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.Animate" />
       <item itemvalue="Python.Run Net" />
       <item itemvalue="Python.Find best net configuration" />
       <item itemvalue="Python.playground" />
@@ -223,7 +299,13 @@
       <workItem from="1586221868999" duration="11000" />
       <workItem from="1586359536522" duration="5873000" />
       <workItem from="1586439116894" duration="619000" />
-      <workItem from="1586794775847" duration="12746000" />
+      <workItem from="1586794775847" duration="16268000" />
+      <workItem from="1586908835544" duration="998000" />
+      <workItem from="1586958687304" duration="6398000" />
+      <workItem from="1587045394903" duration="2232000" />
+      <workItem from="1587047665100" duration="15284000" />
+      <workItem from="1587132125297" duration="7819000" />
+      <workItem from="1587160769762" duration="10000" />
     </task>
     <task id="LOCAL-00001" summary="Added tests">
       <created>1583686959042</created>
@@ -365,7 +447,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586807673033</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Need to use all data">
+      <created>1586807886076</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1586807886076</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -405,87 +494,104 @@
     <MESSAGE value="Squaring previous prediction - new prediction when calculating player score" />
     <MESSAGE value="Squaring the whole score" />
     <MESSAGE value="Get sum of score for all players" />
-    <option name="LAST_COMMIT_MESSAGE" value="Get sum of score for all players" />
+    <MESSAGE value="Need to use all data" />
+    <option name="LAST_COMMIT_MESSAGE" value="Need to use all data" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2024" y="3" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585757405892">
+    <state x="2472" y="181" key="#Plugins" timestamp="1587047622877">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2024" y="3" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1585757405892" />
+    <state x="2472" y="181" key="#Plugins/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587047622877" />
+    <state x="2024" y="3" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587049016481">
+      <screen x="1920" y="3" width="1920" height="1040" />
+    </state>
+    <state x="2024" y="3" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587049016481" />
     <state x="69" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1583771322612" />
     <state x="403" y="144" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584628413028">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="403" y="144" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1584628413028" />
-    <state x="2610" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586804851421">
+    <state x="2610" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586998793719">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2610" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586804851421" />
-    <state x="2330" y="118" width="1101" height="680" key="CommitChangelistDialog2" timestamp="1586807670109">
+    <state x="2610" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586998793719" />
+    <state x="2330" y="118" width="1101" height="680" key="CommitChangelistDialog2" timestamp="1586807884287">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2330" y="118" key="CommitChangelistDialog2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586807670109" />
+    <state x="2330" y="118" key="CommitChangelistDialog2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586807884287" />
     <state x="137" y="0" width="1101" height="680" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1584656254086" />
     <state x="2102" y="81" width="1024" height="572" key="DiffContextDialog" timestamp="1586389040901">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
     <state x="2102" y="81" width="1024" height="572" key="DiffContextDialog/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586389040901" />
     <state x="121" y="51" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1584575562806" />
-    <state x="2552" y="148" key="FileChooserDialogImpl" timestamp="1585757403332">
+    <state x="2552" y="148" key="FileChooserDialogImpl" timestamp="1587049014377">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2552" y="148" key="FileChooserDialogImpl/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1585757403331" />
+    <state x="2552" y="148" key="FileChooserDialogImpl/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587049014377" />
     <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1583771321633" />
-    <state width="1877" height="323" key="GridCell.Tab.0.bottom" timestamp="1586807512577">
+    <state width="1877" height="2" key="GridCell.Tab.0.bottom" timestamp="1587144592248">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state width="1877" height="323" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586807512577" />
-    <state width="1237" height="447" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1585793230453" />
-    <state width="1877" height="323" key="GridCell.Tab.0.center" timestamp="1586807512577">
+    <state width="1237" height="20" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.3.1920.1040@0.0.1280.680" timestamp="1586909834242" />
+    <state width="1877" height="2" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587144592248" />
+    <state width="1877" height="347" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587086358639" />
+    <state width="1877" height="2" key="GridCell.Tab.0.center" timestamp="1587144592246">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state width="1877" height="323" key="GridCell.Tab.0.center/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586807512577" />
-    <state width="1237" height="447" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1585793230453" />
-    <state width="1877" height="323" key="GridCell.Tab.0.left" timestamp="1586807512577">
+    <state width="1237" height="20" key="GridCell.Tab.0.center/0.0.1280.680/1920.3.1920.1040@0.0.1280.680" timestamp="1586909834242" />
+    <state width="1877" height="2" key="GridCell.Tab.0.center/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587144592246" />
+    <state width="1877" height="347" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1587086358639" />
+    <state width="1877" height="2" key="GridCell.Tab.0.left" timestamp="1587144592245">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state width="1877" height="323" key="GridCell.Tab.0.left/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586807512577" />
-    <state width="1237" height="447" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1585793230453" />
-    <state width="1877" height="323" key="GridCell.Tab.0.right" timestamp="1586807512577">
+    <state width="1237" height="20" key="GridCell.Tab.0.left/0.0.1280.680/1920.3.1920.1040@0.0.1280.680" timestamp="1586909834242" />
+    <state width="1877" height="2" key="GridCell.Tab.0.left/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587144592245" />
+    <state width="1877" height="347" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1587086358639" />
+    <state width="1877" height="2" key="GridCell.Tab.0.right" timestamp="1587144592247">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state width="1877" height="323" key="GridCell.Tab.0.right/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586807512577" />
-    <state width="1237" height="447" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1585793230453" />
-    <state x="142" y="0" key="SettingsEditor" timestamp="1583510434281">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1237" height="20" key="GridCell.Tab.0.right/0.0.1280.680/1920.3.1920.1040@0.0.1280.680" timestamp="1586909834242" />
+    <state width="1877" height="2" key="GridCell.Tab.0.right/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587144592247" />
+    <state width="1877" height="347" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1587086358639" />
+    <state x="2133" y="3" key="SettingsEditor" timestamp="1587066336332">
+      <screen x="1920" y="3" width="1920" height="1040" />
     </state>
+    <state x="2133" y="3" key="SettingsEditor/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587066336332" />
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1583510434281" />
-    <state x="2270" y="116" key="Vcs.Push.Dialog.v2" timestamp="1586807675525">
+    <state x="2270" y="116" key="Vcs.Push.Dialog.v2" timestamp="1586807889444">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2270" y="116" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586807675525" />
+    <state x="2270" y="116" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586807889444" />
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1584633146119" />
-    <state x="337" y="165" width="598" height="352" key="com.intellij.ide.util.TipDialog" timestamp="1586794985848">
+    <state x="337" y="165" width="598" height="352" key="com.intellij.ide.util.TipDialog" timestamp="1587160769735">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="337" y="165" width="598" height="352" key="com.intellij.ide.util.TipDialog/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586794985848" />
+    <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680/1920.3.1920.1040@0.0.1280.680" timestamp="1587160769735" />
+    <state x="337" y="165" width="598" height="352" key="com.intellij.ide.util.TipDialog/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587132125755" />
     <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1584664976812" />
-    <state x="2595" y="398" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586807612602">
+    <state x="2526" y="138" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587057271016">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2595" y="398" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586807612602" />
-    <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1584656404251" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1583861459949">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="2526" y="138" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587057271016" />
+    <state x="2595" y="398" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586808286130">
+      <screen x="1920" y="3" width="1920" height="1040" />
     </state>
+    <state x="2595" y="398" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586808286130" />
+    <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1584656404251" />
+    <state x="2375" y="5" width="1008" height="1037" key="search.everywhere.popup" timestamp="1587047320534">
+      <screen x="1920" y="3" width="1920" height="1040" />
+    </state>
+    <state x="2375" y="5" width="1008" height="1037" key="search.everywhere.popup/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587047320534" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1583861459949" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Linesman$Net_Tests.coverage" NAME="Net Tests Coverage Results" MODIFIED="1583686236606" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Linesman$Animate.coverage" NAME="Animate Coverage Results" MODIFIED="1587135105361" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Linesman$Run_net.coverage" NAME="Run net Coverage Results" MODIFIED="1583531587256" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Linesman$Unittests_for_netTest_MyTestCase_test_data_shape.coverage" NAME="Unittests for netTest.MyTestCase.test_data_shape Coverage Results" MODIFIED="1583687981906" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Linesman$Find_best_net_configuration.coverage" NAME="Find best net configuration Coverage Results" MODIFIED="1586098774347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Linesman$Run_Net.coverage" NAME="Run Net Coverage Results" MODIFIED="1586807512565" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Linesman$playground.coverage" NAME="playground Coverage Results" MODIFIED="1584577925251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Linesman$Run_Net.coverage" NAME="Run Net Coverage Results" MODIFIED="1587135340806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Linesman$playground.coverage" NAME="playground Coverage Results" MODIFIED="1587047474312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

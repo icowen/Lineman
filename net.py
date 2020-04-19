@@ -42,21 +42,22 @@ def main():
     model = get_model(x_train_df)
     initial_model = get_initial_net(model)
     update_net_to_use_prior(model, initial_model, x_train_df, prior)
-    train_model(model, x_train_df)
+    # train_model(model, x_train_df)
 
     x_test_df = predict(model, initial_model, prior, x_test_df)
+    print(x_test_df.head().to_string())
 
-    for play_id in x_test_df["playId"].unique():
-        for player_id in ["OL_C", "OL_LG", "OL_LT", "OL_RG", "OL_RT"]:
-            fig, (ax1, ax2, ax3) = plt.subplots(3)
-            get_rating_vs_frame_for_play_id(ax1, model, initial_model, x_test_df, prior, play_id, player_id, .01)
-            get_S_vs_frame_graph_for_play(ax2, x_test_df, play_id)
-            get_score_per_frame_for_play(ax3, x_test_df, play_id, player_id)
-            plt.tight_layout()
-            plt.savefig(f'graphs/{TIME}_play{play_id}_player{player_id}.png')
-            plt.close()
-            x_test_df.loc[x_test_df["playId"] == play_id, f"{player_id}_score_sum"] = x_test_df.loc[x_test_df["playId"] == play_id, f"{player_id}_score"].sum()
-    x_test_df.to_csv('scores.csv')
+    # for play_id in x_test_df["playId"].unique():
+    #     for player_id in ["OL_C", "OL_LG", "OL_LT", "OL_RG", "OL_RT"]:
+    #         fig, (ax1, ax2, ax3) = plt.subplots(3)
+    #         get_rating_vs_frame_for_play_id(ax1, model, initial_model, x_test_df, prior, play_id, player_id, .01)
+    #         get_S_vs_frame_graph_for_play(ax2, x_test_df, play_id)
+    #         get_score_per_frame_for_play(ax3, x_test_df, play_id, player_id)
+    #         plt.tight_layout()
+    #         plt.savefig(f'graphs/{TIME}_play{play_id}_player{player_id}.png')
+    #         plt.close()
+    #         x_test_df.loc[x_test_df["playId"] == play_id, f"{player_id}_score_sum"] = x_test_df.loc[x_test_df["playId"] == play_id, f"{player_id}_score"].sum()
+    # x_test_df.to_csv('scores.csv')
 
 
 def get_data_without_last_5_plays():
