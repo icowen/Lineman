@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7910b418-ca29-4f02-b7b7-79e1bb5dcd4e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animate_play.py" beforeDir="false" afterPath="$PROJECT_DIR$/animate_play.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_visualization.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/data_visualization.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/net.py" beforeDir="false" afterPath="$PROJECT_DIR$/net.py" afterDir="false" />
-    </list>
+    <list default="true" id="7910b418-ca29-4f02-b7b7-79e1bb5dcd4e" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -258,7 +253,7 @@
       <workItem from="1587310062623" duration="20350000" />
       <workItem from="1587401382622" duration="2414000" />
       <workItem from="1587413966588" duration="9000" />
-      <workItem from="1587482746191" duration="4499000" />
+      <workItem from="1587482746191" duration="4754000" />
     </task>
     <task id="LOCAL-00001" summary="Added tests">
       <created>1583686959042</created>
@@ -435,7 +430,21 @@
       <option name="project" value="LOCAL" />
       <updated>1587312619554</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="-New play gifs&#10;-Updated visualization workbook&#10;-Play animation file&#10;-Making graphs for all the plays... and getting all the scores...">
+      <created>1587487433390</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1587487433390</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Adding models to vcs">
+      <created>1587487620866</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1587487620866</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -480,7 +489,9 @@
     <MESSAGE value="Updated score function and write score df to csv." />
     <MESSAGE value="Changed ylim of score graph" />
     <MESSAGE value="I used the sum of scores for ylim instead of individual scores." />
-    <option name="LAST_COMMIT_MESSAGE" value="I used the sum of scores for ylim instead of individual scores." />
+    <MESSAGE value="-New play gifs&#10;-Updated visualization workbook&#10;-Play animation file&#10;-Making graphs for all the plays... and getting all the scores..." />
+    <MESSAGE value="Adding models to vcs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding models to vcs" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2472" y="181" key="#Plugins" timestamp="1587047622877">
@@ -500,10 +511,10 @@
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
     <state x="2610" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586998793719" />
-    <state x="2330" y="118" width="1101" height="680" key="CommitChangelistDialog2" timestamp="1587312617315">
+    <state x="2330" y="118" width="1101" height="680" key="CommitChangelistDialog2" timestamp="1587487619330">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2330" y="118" key="CommitChangelistDialog2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587312617315" />
+    <state x="2330" y="118" key="CommitChangelistDialog2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587487619330" />
     <state x="137" y="0" width="1101" height="680" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1584656254086" />
     <state x="2102" y="81" width="1024" height="572" key="DiffContextDialog" timestamp="1586389040901">
       <screen x="1920" y="3" width="1920" height="1040" />
@@ -544,10 +555,10 @@
     </state>
     <state x="2133" y="3" key="SettingsEditor/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587066336332" />
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1583510434281" />
-    <state x="2270" y="116" key="Vcs.Push.Dialog.v2" timestamp="1587312624213">
+    <state x="2270" y="116" key="Vcs.Push.Dialog.v2" timestamp="1587487436793">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2270" y="116" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587312624213" />
+    <state x="2270" y="116" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587487436793" />
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1584633146119" />
     <state x="337" y="165" width="598" height="352" key="com.intellij.ide.util.TipDialog" timestamp="1587413966581">
       <screen x="0" y="0" width="1280" height="680" />
