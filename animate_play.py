@@ -19,8 +19,8 @@ plt.legend(handles=[def_label, off_label])
 df = pd.read_csv('netdata.csv')
 df.drop('X', inplace=True, axis=1)
 df.fillna('Run', inplace=True)
-gameId = 2017090700
-playId = 68
+gameId = 2017101600
+playId = 2928
 play = df.loc[(df["playId"] == playId) & (df["gameId"] == gameId)]
 plt.title(f'Play {playId}')
 

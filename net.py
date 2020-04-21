@@ -38,25 +38,54 @@ def main():
     x_train_df = get_data_without_last_5_plays()
     x_test_df = DATA.loc[~DATA["playId"].isin(x_train_df["playId"].unique())]
 
+    # print(DATA.loc[DATA["sack.ind"] == 1])
+    # x_test_df = DATA.loc[(DATA["playId"] == 2824.0) & (DATA["gameId"] == 2017101600.0)]
+
     prior = 4
-    model = get_model(x_train_df)
-    initial_model = get_initial_net(model)
-    update_net_to_use_prior(model, initial_model, x_train_df, prior)
-    train_model(model, x_train_df)
+    # model = get_model(x_train_df)
+    # initial_model = get_initial_net(model)
+    # update_net_to_use_prior(model, initial_model, x_train_df, prior)
+    # train_model(model, x_train_df)
 
-    x_test_df = predict(model, initial_model, prior, x_test_df)
+    model = tf.keras.models.load_model('models/04-19-2020_10-36-58_epochs1.h5', compile=False)
+    initial_model = tf.keras.models.load_model('models/04-19-2020_10-36-58_epochs1_initial.h5', compile=False)
 
-    for play_id in x_test_df["playId"].unique():
+    # x_test_df = predict(model, initial_model, prior, x_test_df)
+    all_data = predict(model, initial_model, prior, DATA)
+
+    for group in DATA.groupby(["gameId", "playId"]).groups:
+        game_id = group[0]
+        play_id = group[1]
         for player_id in ["OL_C", "OL_LG", "OL_LT", "OL_RG", "OL_RT"]:
             fig, (ax1, ax2, ax3) = plt.subplots(3)
-            get_rating_vs_frame_for_play_id(ax1, model, initial_model, x_test_df, prior, play_id, player_id, .01)
-            get_S_vs_frame_graph_for_play(ax2, x_test_df, play_id)
-            get_score_per_frame_for_play(ax3, x_test_df, play_id, player_id)
+            get_rating_vs_frame_for_play_id(ax1, model, initial_model, all_data, prior, play_id, game_id, player_id,
+                                            .01)
+            get_S_vs_frame_graph_for_play(ax2, all_data, play_id, game_id)
+            get_score_per_frame_for_play(ax3, all_data, play_id, player_id, game_id)
             plt.tight_layout()
-            plt.savefig(f'graphs/{TIME}_play{play_id}_player{player_id}.png')
+            plt.savefig(f'graphs/{TIME}_play{play_id}_game{game_id}_player{player_id}.png')
             plt.close()
-            x_test_df.loc[x_test_df["playId"] == play_id, f"{player_id}_score_sum"] = x_test_df.loc[x_test_df["playId"] == play_id, f"{player_id}_score"].sum()
-    x_test_df.groupby('playId').first().loc[:, [c for c in x_test_df if re.match(r'.*(score_sum|playId).*', c)]].to_csv('scores.csv')
+
+            all_data.loc[(all_data["playId"] == play_id) & (all_data["gameId"] == game_id), f"{player_id}_score_sum"] = \
+                all_data.loc[
+                    (all_data["playId"] == play_id) & (all_data["gameId"] == game_id), f"{player_id}_score"].sum()
+
+    all_data.groupby(['gameId', 'playId']).first().loc[:,
+    [c for c in x_test_df if re.match(r'.*(score_sum|playId).*', c)]].to_csv(
+        'scores.csv')
+
+    # for play_id in x_test_df["playId"].unique():
+    # for play_id in all_data["playId"].unique():
+    #     for player_id in ["OL_C", "OL_LG", "OL_LT", "OL_RG", "OL_RT"]:
+    #         fig, (ax1, ax2, ax3) = plt.subplots(3)
+    #         get_rating_vs_frame_for_play_id(ax1, model, initial_model, x_test_df, prior, play_id, player_id, .01)
+    #         get_S_vs_frame_graph_for_play(ax2, x_test_df, play_id)
+    #         get_score_per_frame_for_play(ax3, x_test_df, play_id, player_id)
+    #         plt.tight_layout()
+    #         plt.savefig(f'graphs/{TIME}_play{play_id}_player{player_id}.png')
+    #         plt.close()
+    #         x_test_df.loc[x_test_df["playId"] == play_id, f"{player_id}_score_sum"] = x_test_df.loc[x_test_df["playId"] == play_id, f"{player_id}_score"].sum()
+    # x_test_df.groupby('playId').first().loc[:, [c for c in x_test_df if re.match(r'.*(score_sum|playId).*', c)]].to_csv('scores.csv')
 
 
 def get_data_without_last_5_plays():
@@ -166,10 +195,10 @@ def plot_predictions(test_plays_df):
     plt.show()
 
 
-def get_rating_vs_frame_for_play_id(ax, model, initial_model, df, prior, play_id, player_label, delta):
-    print(f'Generating rating vs frame for {player_label} on play {play_id}.')
+def get_rating_vs_frame_for_play_id(ax, model, initial_model, df, prior, play_id, game_id, player_label, delta):
+    print(f'Generating rating vs frame for {player_label} on play {play_id} and game {game_id}.')
     leverages = []
-    play = df[df["playId"] == play_id]
+    play = df[(df["playId"] == play_id) & (df["gameId"] == game_id)]
     for frame_id in play["frame.id"].unique():
         frame_df = play[play["frame.id"] == frame_id]
 
@@ -188,10 +217,11 @@ def get_rating_vs_frame_for_play_id(ax, model, initial_model, df, prior, play_id
         ax.scatter(frame_id, leverage, color='b')
         df.loc[(df["playId"] == play_id) & (df["frame.id"] == frame_id), f'{player_label}_leverage'] = leverage
         if frame_id != 1:
-            df.loc[(df["playId"] == play_id) & (df["frame.id"] == frame_id), f"{player_label}_score"] = df.loc[
-                (df["playId"] == play_id) & (df["frame.id"] == frame_id)].apply(
+            df.loc[(df["playId"] == play_id) & (df["frame.id"] == frame_id) & (
+                    df["gameId"] == game_id), f"{player_label}_score"] = df.loc[
+                (df["playId"] == play_id) & (df["frame.id"] == frame_id) & (df["gameId"] == game_id)].apply(
                 lambda x: get_player_score(x, leverage, df, play_id, frame_id), axis=1)
-    ax.set_title(f'Rating vs FrameId for Play {play_id} and Player {player_label}')
+    ax.set_title(f'Rating vs FrameId for Play {play_id} Game {game_id} and Player {player_label}')
     ax.set_ylim(0, 1)
     plt.xlabel('Frame ID')
     plt.ylabel('Rating')
@@ -204,23 +234,22 @@ def get_player_score(x, leverage, df, play_id, frame_id):
     return score
 
 
-def get_S_vs_frame_graph_for_play(ax, df, play_id):
-    print(f'Generating S vs Frame graph for play {play_id}.')
-    df = df[df["playId"] == play_id]
+def get_S_vs_frame_graph_for_play(ax, df, play_id, game_id):
+    print(f'Generating S vs Frame graph for play {play_id} Game {game_id}.')
+    df = df[(df["playId"] == play_id) & (df["gameId"] == game_id)]
     ax.scatter(df["frame.id"], df["Predicted"], label='Predicted (ie. S)', c='red')
     ax.scatter(df["frame.id"], df["PlayResult"], label='Actual', c='blue')
-    ax.set_title(f'S vs FrameId for Play {play_id}')
+    ax.set_title(f'S vs FrameId for Play {play_id} Game {game_id}')
     ax.legend()
     plt.xlabel('Frame ID')
     plt.ylabel('Yards Gained (ie. S)')
 
 
-def get_score_per_frame_for_play(ax, df, play_id, player_id):
-    print(f'Generating score graph for play {play_id} and player {player_id}.')
-    df = df[df["playId"] == play_id]
+def get_score_per_frame_for_play(ax, df, play_id, player_id, game_id):
+    print(f'Generating score graph for play {play_id} game {game_id} and player {player_id}.')
+    df = df[(df["playId"] == play_id) & (df["gameId"] == game_id)]
     ax.scatter(df["frame.id"], df[f"{player_id}_score"], label='Predicted (ie. S)', c='red')
-    ax.set_title(f'{player_id} Score vs FrameId for Play {play_id}')
-    ax.legend()
+    ax.set_title(f'{player_id} Score vs FrameId for Play {play_id} Game {game_id}')
     ax.set_ylim(-.75, .75)
     plt.xlabel('Frame ID')
     plt.ylabel('Score')
