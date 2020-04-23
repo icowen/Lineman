@@ -57,21 +57,23 @@ def main():
         game_id = group[0]
         play_id = group[1]
         for player_id in ["OL_C", "OL_LG", "OL_LT", "OL_RG", "OL_RT"]:
-            fig, (ax1, ax2, ax3) = plt.subplots(3)
-            get_rating_vs_frame_for_play_id(ax1, model, initial_model, all_data, prior, play_id, game_id, player_id,
+            get_rating_vs_frame_for_play_id(None, model, initial_model, all_data, prior, play_id, game_id, player_id,
                                             .01)
-            get_S_vs_frame_graph_for_play(ax2, all_data, play_id, game_id)
-            get_score_per_frame_for_play(ax3, all_data, play_id, player_id, game_id)
-            plt.tight_layout()
-            plt.savefig(f'graphs/{TIME}_play{play_id}_game{game_id}_player{player_id}.png')
-            plt.close()
+            # fig, (ax1, ax2, ax3) = plt.subplots(3)
+            # get_rating_vs_frame_for_play_id(ax1, model, initial_model, all_data, prior, play_id, game_id, player_id,
+            #                                 .01)
+            # get_S_vs_frame_graph_for_play(ax2, all_data, play_id, game_id)
+            # get_score_per_frame_for_play(ax3, all_data, play_id, player_id, game_id)
+            # plt.tight_layout()
+            # plt.savefig(f'graphs/{TIME}_play{play_id}_game{game_id}_player{player_id}.png')
+            # plt.close()
 
             all_data.loc[(all_data["playId"] == play_id) & (all_data["gameId"] == game_id), f"{player_id}_score_sum"] = \
                 all_data.loc[
                     (all_data["playId"] == play_id) & (all_data["gameId"] == game_id), f"{player_id}_score"].sum()
 
     all_data.groupby(['gameId', 'playId']).first().loc[:,
-    [c for c in x_test_df if re.match(r'.*(score_sum|playId).*', c)]].to_csv(
+    [c for c in x_test_df if re.match(r'.*(score_sum|playId|gameID).*', c)]].to_csv(
         'scores.csv')
 
     # for play_id in x_test_df["playId"].unique():
@@ -214,17 +216,17 @@ def get_rating_vs_frame_for_play_id(ax, model, initial_model, df, prior, play_id
         dy = (frame_df.iloc[0]["Predicted"] - move_y_df.iloc[0]["Predicted_y"]) / delta
         leverage = math.sqrt(dx ** 2 + dy ** 2)
         leverages.append(leverage)
-        ax.scatter(frame_id, leverage, color='b')
+        # ax.scatter(frame_id, leverage, color='b')
         df.loc[(df["playId"] == play_id) & (df["frame.id"] == frame_id), f'{player_label}_leverage'] = leverage
         if frame_id != 1:
             df.loc[(df["playId"] == play_id) & (df["frame.id"] == frame_id) & (
                     df["gameId"] == game_id), f"{player_label}_score"] = df.loc[
                 (df["playId"] == play_id) & (df["frame.id"] == frame_id) & (df["gameId"] == game_id)].apply(
                 lambda x: get_player_score(x, leverage, df, play_id, frame_id), axis=1)
-    ax.set_title(f'Rating vs FrameId for Play {play_id} Game {game_id} and Player {player_label}')
-    ax.set_ylim(0, 1)
-    plt.xlabel('Frame ID')
-    plt.ylabel('Rating')
+    # ax.set_title(f'Rating vs FrameId for Play {play_id} Game {game_id} and Player {player_label}')
+    # ax.set_ylim(0, 1)
+    # plt.xlabel('Frame ID')
+    # plt.ylabel('Rating')
 
 
 def get_player_score(x, leverage, df, play_id, frame_id):
