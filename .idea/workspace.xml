@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7910b418-ca29-4f02-b7b7-79e1bb5dcd4e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_analysis.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -281,7 +280,7 @@
       <workItem from="1587413966588" duration="9000" />
       <workItem from="1587482746191" duration="5427000" />
       <workItem from="1587650710908" duration="263000" />
-      <workItem from="1587653093735" duration="733000" />
+      <workItem from="1587653093735" duration="1535000" />
     </task>
     <task id="LOCAL-00001" summary="Added tests">
       <created>1583686959042</created>
@@ -486,7 +485,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587653387818</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="-Added new way to explore data.&#10;-File that has game/play ids for plays with sacks">
+      <created>1587654031575</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1587654031575</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -509,7 +515,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/Lineman" />
     </ignored-roots>
-    <MESSAGE value="Added tests" />
     <MESSAGE value="New code for plotting frame vs S prediction as well as moving a OL's position and calculating effect of that change." />
     <MESSAGE value="Implemented a mse loss function that uses a prior of 4 yards for each frame. Net now predicts 4 yards without any training." />
     <MESSAGE value="Can't run on my commputer... trying on gpu" />
@@ -534,7 +539,8 @@
     <MESSAGE value="-New play gifs&#10;-Updated visualization workbook&#10;-Play animation file&#10;-Making graphs for all the plays... and getting all the scores..." />
     <MESSAGE value="Adding models to vcs" />
     <MESSAGE value="New net doesn't make any graphs" />
-    <option name="LAST_COMMIT_MESSAGE" value="New net doesn't make any graphs" />
+    <MESSAGE value="-Added new way to explore data.&#10;-File that has game/play ids for plays with sacks" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Added new way to explore data.&#10;-File that has game/play ids for plays with sacks" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2472" y="181" key="#Plugins" timestamp="1587047622877">
@@ -554,10 +560,10 @@
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
     <state x="2610" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586998793719" />
-    <state x="2330" y="118" width="1101" height="680" key="CommitChangelistDialog2" timestamp="1587653384871">
+    <state x="2330" y="118" width="1101" height="680" key="CommitChangelistDialog2" timestamp="1587654027964">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2330" y="118" key="CommitChangelistDialog2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587653384871" />
+    <state x="2330" y="118" key="CommitChangelistDialog2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587654027964" />
     <state x="137" y="0" width="1101" height="680" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1584656254086" />
     <state x="2102" y="81" width="1024" height="572" key="DiffContextDialog" timestamp="1586389040901">
       <screen x="1920" y="3" width="1920" height="1040" />

@@ -80,5 +80,5 @@ def update(frame):
 
 if __name__ == '__main__':
     anim = FuncAnimation(fig, update, frames=play["frame.id"], interval=100)
-    anim.save(f'play{playId}.gif', dpi=80, writer='imagemagick')
+    anim.save(f'play_gifs/play{playId}.gif', dpi=80, writer='imagemagick')
     # plt.show()
