@@ -25,7 +25,7 @@ MODEL = None
 DATA = None
 DATA_FILENAME = 'netdata.csv'
 SAVE = True
-KEEP_REGEX = r'(Off|OL_(<?(C|LG|RG|RT|LT)_(x|y))$|Def|frame|Match)'
+KEEP_REGEX = r'(Off|OL_(<?(C|LG|RG|RT|LT)_(x|y))$|Def|frame.id|Match)'
 
 TIME = datetime.datetime.now().strftime('%m-%d-%Y_%H-%M-%S')
 FILENAME = f'{TIME}_epochs{NUM_EPOCHS}'
@@ -74,7 +74,7 @@ def main():
 
     all_data.groupby(['gameId', 'playId']).first().loc[:,
     [c for c in x_test_df if re.match(r'.*(score_sum|playId|gameID).*', c)]].to_csv(
-        'scores.csv')
+        'all_scores.csv')
 
     # for play_id in x_test_df["playId"].unique():
     # for play_id in all_data["playId"].unique():
@@ -104,6 +104,17 @@ def get_all_data():
     if DATA_FILENAME == 'netdata.csv':
         data = pd.read_csv(DATA_FILENAME, dtype='float32',
                            converters={'PassResult': lambda x: 'R' if pd.isna(x) else x})
+        data.dropna(inplace=True)
+        data.drop(['X'], axis=1, inplace=True)
+    if DATA_FILENAME == 'netdata_with_ball.csv':
+        data = pd.read_csv(DATA_FILENAME, dtype='float32',
+                           converters={'PassResult': lambda x: 'R' if pd.isna(x) else x,
+                                       'pass.frame': lambda x: 0 if x == '' else int(x),
+                                       'playId': lambda x: int(x),
+                                       'gameId': lambda x: int(x),
+                                       'frame.id': lambda x: int(x),
+                                       'sack.ind': lambda x: int(x),
+                                       'num_vec': lambda x: int(x)})
         data.dropna(inplace=True)
         data.drop(['X'], axis=1, inplace=True)
     if DATA_FILENAME == "fin_70.csv":
