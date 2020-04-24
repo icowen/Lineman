@@ -52,6 +52,7 @@ def main():
 
     # x_test_df = predict(model, initial_model, prior, x_test_df)
     all_data = predict(model, initial_model, prior, DATA)
+    count = 0
 
     for group in DATA.groupby(["gameId", "playId"]).groups:
         game_id = group[0]
@@ -71,10 +72,11 @@ def main():
             all_data.loc[(all_data["playId"] == play_id) & (all_data["gameId"] == game_id), f"{player_id}_score_sum"] = \
                 all_data.loc[
                     (all_data["playId"] == play_id) & (all_data["gameId"] == game_id), f"{player_id}_score"].sum()
-
-    all_data.groupby(['gameId', 'playId']).first().loc[:,
-    [c for c in x_test_df if re.match(r'.*(score_sum|playId|gameID).*', c)]].to_csv(
-        'all_scores.csv')
+        if count % 10 == 0:
+            all_data.groupby(['gameId', 'playId']).first().loc[:,
+            [c for c in x_test_df if re.match(r'.*(score_sum|playId|gameID).*', c)]].to_csv(
+                'all_scores.csv')
+        count += 1
 
     # for play_id in x_test_df["playId"].unique():
     # for play_id in all_data["playId"].unique():
