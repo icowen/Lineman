@@ -74,7 +74,7 @@ def main():
                     (all_data["playId"] == play_id) & (all_data["gameId"] == game_id), f"{player_id}_score"].sum()
         if count % 10 == 0:
             all_data.groupby(['gameId', 'playId']).first().loc[:,
-            [c for c in x_test_df if re.match(r'.*(score_sum|playId|gameID).*', c)]].to_csv(
+            [c for c in x_test_df if re.match(r'.*(score_sum).*', c)]].to_csv(
                 'all_scores.csv')
         count += 1
 
