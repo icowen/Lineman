@@ -34,7 +34,7 @@ LOSS_PLOT_SAVE_FILENAME = f'loss_histories/{FILENAME}.png'
 
 
 def main():
-    global BATCH_SIZE, NUM_HIDDEN_NODES, NUM_EPOCHS
+    global BATCH_SIZE, NUM_HIDDEN_NODES, NUM_EPOCHS, DATA
     x_train_df = get_data_without_last_5_plays()
     x_test_df = DATA.loc[~DATA["playId"].isin(x_train_df["playId"].unique())]
 
@@ -50,7 +50,8 @@ def main():
     model = tf.keras.models.load_model('models/04-19-2020_10-36-58_epochs1.h5', compile=False)
     initial_model = tf.keras.models.load_model('models/04-19-2020_10-36-58_epochs1_initial.h5', compile=False)
 
-    # x_test_df = predict(model, initial_model, prior, x_test_df)
+    # x_test_df = predict(model, initial_model, prior, x_test_df)\
+
     all_data = predict(model, initial_model, prior, DATA)
     count = 0
 
@@ -74,7 +75,7 @@ def main():
                     (all_data["playId"] == play_id) & (all_data["gameId"] == game_id), f"{player_id}_score"].sum()
         if count % 10 == 0:
             all_data.groupby(['gameId', 'playId']).first().loc[:,
-            [c for c in x_test_df if re.match(r'.*(score_sum).*', c)]].to_csv(
+            [c for c in all_data.columns if re.match(r'.*(score_sum).*', c)]].to_csv(
                 'all_scores.csv')
         count += 1
 
