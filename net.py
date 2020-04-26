@@ -36,7 +36,7 @@ LOSS_PLOT_SAVE_FILENAME = f'loss_histories/{FILENAME}.png'
 def main():
     global BATCH_SIZE, NUM_HIDDEN_NODES, NUM_EPOCHS, DATA
     x_train_df = get_data_without_last_5_plays()
-    x_test_df = DATA.loc[~DATA["playId"].isin(x_train_df["playId"].unique())]
+    x_test_df = DATA.loc[~DATA.isin(x_train_df)]
 
     # print(DATA.loc[DATA["sack.ind"] == 1])
     # x_test_df = DATA.loc[(DATA["playId"] == 2824.0) & (DATA["gameId"] == 2017101600.0)]
@@ -103,7 +103,7 @@ def get_data_without_last_5_plays():
     global DATA
     get_all_data()
     df = pd.DataFrame()
-    for group in list(DATA.groupby(["gameId", "playId"]).groups)[-5:]:
+    for group in list(DATA.groupby(["gameId", "playId"]).groups)[:-5]:
         game_id = group[0]
         play_id = group[1]
         df = df.append(DATA.loc[(DATA["gameId"] == game_id) & (DATA["playId"] == play_id)])
