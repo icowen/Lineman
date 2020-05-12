@@ -7,5 +7,6 @@ rating_vs_frame_graphs/
 playground.py
 fin_70.csv
 netdata.csv
+train.csv
 scratch*
 netdata_with_ball.csv

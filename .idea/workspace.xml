@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7910b418-ca29-4f02-b7b7-79e1bb5dcd4e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ConvolutionNet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/net.py" beforeDir="false" afterPath="$PROJECT_DIR$/net.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animate_play.py" beforeDir="false" afterPath="$PROJECT_DIR$/animate_play.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/play_gifs/play3609.gif" beforeDir="false" afterPath="$PROJECT_DIR$/play_gifs/play3609.gif" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +44,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JSON" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/data_analysis.py" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JSON&#10;CSV" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ConvolutionNet.py" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.notebooks.jupyter.connections.configuration.JupyterServerConfigurable" />
@@ -59,7 +62,7 @@
       <recent name="C:\Users\ian_c\Linesman\graphs\4-8" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Run Net">
+  <component name="RunManager" selected="Python.Convolutional">
     <configuration name="Animate" type="PythonConfigurationType" factoryName="Python">
       <module name="Linesman" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -74,6 +77,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/animate_play.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Convolutional" type="PythonConfigurationType" factoryName="Python">
+      <module name="Linesman" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\ian_c\Anaconda3\envs\Linesman\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ConvolutionNet.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -225,6 +250,7 @@
     </configuration>
     <list>
       <item itemvalue="Python.Animate" />
+      <item itemvalue="Python.Convolutional" />
       <item itemvalue="Python.Run Net" />
       <item itemvalue="Python.data analysis" />
       <item itemvalue="Python.Find best net configuration" />
@@ -285,7 +311,13 @@
       <workItem from="1587413966588" duration="9000" />
       <workItem from="1587482746191" duration="5427000" />
       <workItem from="1587650710908" duration="263000" />
-      <workItem from="1587653093735" duration="13942000" />
+      <workItem from="1587653093735" duration="15635000" />
+      <workItem from="1588253687090" duration="3097000" />
+      <workItem from="1588618569300" duration="18000" />
+      <workItem from="1588701693206" duration="2970000" />
+      <workItem from="1588772422728" duration="28000" />
+      <workItem from="1588794500646" duration="1767000" />
+      <workItem from="1589206023821" duration="26911000" />
     </task>
     <task id="LOCAL-00001" summary="Added tests">
       <created>1583686959042</created>
@@ -546,7 +578,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587933465110</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Actually works this time... I think.">
+      <created>1587936201070</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1587936201070</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -569,7 +608,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/Lineman" />
     </ignored-roots>
-    <MESSAGE value="Removed ModelCheckpoint." />
     <MESSAGE value="Changed number of epochs for more configurations per hour." />
     <MESSAGE value="Run net with new config" />
     <MESSAGE value="Changed batch size" />
@@ -594,17 +632,18 @@
     <MESSAGE value="Write to csv after every 10 plays." />
     <MESSAGE value="-Organized graphs folder&#10;-Training net using ball data" />
     <MESSAGE value="_fixed test/train data" />
-    <option name="LAST_COMMIT_MESSAGE" value="_fixed test/train data" />
+    <MESSAGE value="Actually works this time... I think." />
+    <option name="LAST_COMMIT_MESSAGE" value="Actually works this time... I think." />
   </component>
   <component name="WindowStateProjectService">
     <state x="2472" y="181" key="#Plugins" timestamp="1587047622877">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
     <state x="2472" y="181" key="#Plugins/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587047622877" />
-    <state x="2024" y="3" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587653544028">
+    <state x="2024" y="3" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589206881738">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2024" y="3" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587653544028" />
+    <state x="2024" y="3" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1589206881738" />
     <state x="69" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1583771322612" />
     <state x="403" y="144" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584628413028">
       <screen x="0" y="0" width="1280" height="680" />
@@ -614,89 +653,90 @@
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
     <state x="2610" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586998793719" />
-    <state x="2330" y="118" width="1101" height="680" key="CommitChangelistDialog2" timestamp="1587936145589">
+    <state x="2330" y="118" width="1101" height="680" key="CommitChangelistDialog2" timestamp="1587936198639">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2330" y="118" key="CommitChangelistDialog2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587936145589" />
+    <state x="2330" y="118" key="CommitChangelistDialog2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587936198639" />
     <state x="137" y="0" width="1101" height="680" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1584656254086" />
     <state x="2102" y="81" width="1024" height="572" key="DiffContextDialog" timestamp="1586389040901">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
     <state x="2102" y="81" width="1024" height="572" key="DiffContextDialog/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1586389040901" />
     <state x="121" y="51" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1584575562806" />
-    <state x="2552" y="148" key="FileChooserDialogImpl" timestamp="1587653542808">
+    <state x="2552" y="148" key="FileChooserDialogImpl" timestamp="1589206879988">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2552" y="148" key="FileChooserDialogImpl/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587653542808" />
+    <state x="2552" y="148" key="FileChooserDialogImpl/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1589206879988" />
     <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1583771321633" />
-    <state width="1877" height="398" key="GridCell.Tab.0.bottom" timestamp="1587936113374">
+    <state width="1877" height="482" key="GridCell.Tab.0.bottom" timestamp="1589297889737">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
     <state width="1237" height="20" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.3.1920.1040@0.0.1280.680" timestamp="1586909834242" />
-    <state width="1877" height="398" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587936113374" />
+    <state width="1877" height="482" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1589297889737" />
     <state width="1877" height="347" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587086358639" />
-    <state width="1877" height="398" key="GridCell.Tab.0.center" timestamp="1587936113374">
+    <state width="1877" height="482" key="GridCell.Tab.0.center" timestamp="1589297889737">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
     <state width="1237" height="20" key="GridCell.Tab.0.center/0.0.1280.680/1920.3.1920.1040@0.0.1280.680" timestamp="1586909834242" />
-    <state width="1877" height="398" key="GridCell.Tab.0.center/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587936113374" />
+    <state width="1877" height="482" key="GridCell.Tab.0.center/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1589297889737" />
     <state width="1877" height="347" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1587086358639" />
-    <state width="1877" height="398" key="GridCell.Tab.0.left" timestamp="1587936113374">
+    <state width="1877" height="482" key="GridCell.Tab.0.left" timestamp="1589297889737">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
     <state width="1237" height="20" key="GridCell.Tab.0.left/0.0.1280.680/1920.3.1920.1040@0.0.1280.680" timestamp="1586909834242" />
-    <state width="1877" height="398" key="GridCell.Tab.0.left/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587936113374" />
+    <state width="1877" height="482" key="GridCell.Tab.0.left/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1589297889737" />
     <state width="1877" height="347" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1587086358639" />
-    <state width="1877" height="398" key="GridCell.Tab.0.right" timestamp="1587936113374">
+    <state width="1877" height="482" key="GridCell.Tab.0.right" timestamp="1589297889737">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
     <state width="1237" height="20" key="GridCell.Tab.0.right/0.0.1280.680/1920.3.1920.1040@0.0.1280.680" timestamp="1586909834242" />
-    <state width="1877" height="398" key="GridCell.Tab.0.right/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587936113374" />
+    <state width="1877" height="482" key="GridCell.Tab.0.right/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1589297889737" />
     <state width="1877" height="347" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1587086358639" />
     <state x="2133" y="3" key="SettingsEditor" timestamp="1587066336332">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
     <state x="2133" y="3" key="SettingsEditor/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587066336332" />
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1583510434281" />
-    <state x="2270" y="116" key="Vcs.Push.Dialog.v2" timestamp="1587933468481">
+    <state x="2270" y="116" key="Vcs.Push.Dialog.v2" timestamp="1587936204158">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2270" y="116" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587933468481" />
+    <state x="2270" y="116" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587936204158" />
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1584633146119" />
-    <state x="337" y="165" width="598" height="352" key="com.intellij.ide.util.TipDialog" timestamp="1587650962746">
+    <state x="337" y="165" width="598" height="352" key="com.intellij.ide.util.TipDialog" timestamp="1588772422715">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680/1920.3.1920.1040@0.0.1280.680" timestamp="1587413966581" />
-    <state x="337" y="165" width="598" height="352" key="com.intellij.ide.util.TipDialog/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587650962746" />
+    <state x="337" y="165" width="598" height="352" key="com.intellij.ide.util.TipDialog/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1588772422715" />
     <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1584664976812" />
-    <state x="2526" y="138" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587057271016">
+    <state x="2526" y="138" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1589289512633">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2526" y="138" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587057271016" />
-    <state x="2595" y="398" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587933434533">
+    <state x="2526" y="138" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1589289512633" />
+    <state x="2595" y="398" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587939310476">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
     <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680/1920.3.1920.1040@0.0.1280.680" timestamp="1587925643631" />
-    <state x="2595" y="398" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587933434532" />
+    <state x="2595" y="398" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587939310476" />
     <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1584656404251" />
     <state x="2928" y="510" width="750" height="321" key="dock-window-1" timestamp="1587483072978">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
     <state x="2928" y="510" width="750" height="321" key="dock-window-1/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587483072978" />
-    <state x="2375" y="5" width="1008" height="1037" key="search.everywhere.popup" timestamp="1587047320534">
+    <state x="2375" y="5" width="1008" height="1037" key="search.everywhere.popup" timestamp="1589214819963">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2375" y="5" width="1008" height="1037" key="search.everywhere.popup/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587047320534" />
+    <state x="2375" y="5" width="1008" height="1037" key="search.everywhere.popup/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1589214819963" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1583861459949" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Linesman$Net_Tests.coverage" NAME="Net Tests Coverage Results" MODIFIED="1583686236606" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Linesman$Animate.coverage" NAME="Animate Coverage Results" MODIFIED="1587484442919" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Linesman$Animate.coverage" NAME="Animate Coverage Results" MODIFIED="1588703612016" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Linesman$Run_net.coverage" NAME="Run net Coverage Results" MODIFIED="1583531587256" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Linesman$data_analysis.coverage" NAME="data analysis Coverage Results" MODIFIED="1587656490523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Linesman$Unittests_for_netTest_MyTestCase_test_data_shape.coverage" NAME="Unittests for netTest.MyTestCase.test_data_shape Coverage Results" MODIFIED="1583687981906" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Linesman$Find_best_net_configuration.coverage" NAME="Find best net configuration Coverage Results" MODIFIED="1586098774347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Linesman$Run_Net.coverage" NAME="Run Net Coverage Results" MODIFIED="1587936113360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Linesman$playground.coverage" NAME="playground Coverage Results" MODIFIED="1587047474312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Linesman$Convolutional.coverage" NAME="Convolutional Coverage Results" MODIFIED="1589297889719" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

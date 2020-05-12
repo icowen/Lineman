@@ -1,10 +1,10 @@
 import re
 
 import matplotlib
+import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 import pandas as pd
 from matplotlib.animation import FuncAnimation
-import matplotlib.patches as mpatches
 
 matplotlib.use("TkAgg")
 
@@ -16,11 +16,11 @@ def_label = mpatches.Patch(color='red', label='Defense')
 off_label = mpatches.Patch(color='blue', label='Offense')
 plt.legend(handles=[def_label, off_label])
 
-df = pd.read_csv('netdata.csv')
+df = pd.read_csv('netdata_with_ball.csv')
 df.drop('X', inplace=True, axis=1)
 df.fillna('Run', inplace=True)
 gameId = 2017101600
-playId = 2928
+playId = 3609
 play = df.loc[(df["playId"] == playId) & (df["gameId"] == gameId)]
 plt.title(f'Play {playId}')
 
@@ -51,8 +51,8 @@ def get_new_x_y(frame_df):
     x = [frame_df[x].values[0] for x in x_cols]
     y = [frame_df[y].values[0] for y in y_cols]
 
-    # Identify a team for each pair of coordinates
-    labels = ['OL'] * 5 + ['def'] * 5 + ['off'] * 6 + ['def'] * 11
+    # Identify a team/ball for each pair of coordinates
+    labels = ['OL'] * 5 + ['def'] * 5 + ['off'] * 6 + ['def'] * 11 + ['ball']
 
     # Return coordinate/team data frame
     return pd.DataFrame(dict(x=x, y=y, label=labels))
@@ -71,11 +71,16 @@ def update(frame):
     scat.set_edgecolors('black')
 
     # Identify offense vs defense
-    colors = ['r' if x == 'def' else 'b' for x in data['label']]
+    colors = get_colors(data)
     scat.set_color(colors)
 
     # Update frame label
     ax.set_xlabel(f'Frame {frame}')
+
+
+def get_colors(data):
+    colors = {'def': 'r', 'off': 'b', 'OL': 'b', 'ball': 'brown'}
+    return [colors[x] for x in data["label"]]
 
 
 if __name__ == '__main__':
