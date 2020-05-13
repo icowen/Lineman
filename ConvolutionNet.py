@@ -1,3 +1,4 @@
+import datetime
 import math
 import re
 import sys
@@ -8,140 +9,260 @@ import tensorflow as tf
 from keras import backend as K
 
 np.set_printoptions(threshold=sys.maxsize)
-
-data = pd.read_csv('train.csv')
-keep_cols = ['GameId', 'PlayId', 'Team', 'X', 'Y', 'S', 'Dis', 'Orientation', 'Dir', 'NflId', 'PossessionTeam',
-             'NflIdRusher', 'HomeTeamAbbr', 'VisitorTeamAbbr', 'Yards']
-data.drop([x for x in data.columns if x not in keep_cols], axis=1, inplace=True)
-data["IsRusher"] = data.apply(lambda x: x['NflId'] == x['NflIdRusher'], axis=1)
-data["IsOffense"] = data.apply(lambda x:
-                               (x['Team'] == 'home') == (x['PossessionTeam'] == x['HomeTeamAbbr']), axis=1)
-
-data = data.set_index(["GameId", "PlayId"])
-data['OffenseX'] = data.loc[data['IsOffense'] & ~data['IsRusher']].groupby(['GameId', 'PlayId'])['X'].apply(list)
-data['OffenseY'] = data.loc[data['IsOffense'] & ~data['IsRusher']].groupby(['GameId', 'PlayId'])['Y'].apply(list)
-data['OffenseS'] = data.loc[data['IsOffense'] & ~data['IsRusher']].groupby(['GameId', 'PlayId'])['S'].apply(list)
-data['RusherX'] = data.loc[data['IsRusher']].groupby(['GameId', 'PlayId'])['X'].first()
-data['RusherY'] = data.loc[data['IsRusher']].groupby(['GameId', 'PlayId'])['Y'].first()
-data['RusherS'] = data.loc[data['IsRusher']].groupby(['GameId', 'PlayId'])['S'].first()
-data['DefenseX'] = data.loc[~data['IsOffense']].groupby(['GameId', 'PlayId'])['X'].apply(list)
-data['DefenseY'] = data.loc[~data['IsOffense']].groupby(['GameId', 'PlayId'])['Y'].apply(list)
-data['DefenseS'] = data.loc[~data['IsOffense']].groupby(['GameId', 'PlayId'])['S'].apply(list)
-data = data.reset_index().drop_duplicates(subset=['GameId', 'PlayId'], keep='first')
-data = data.set_index(["GameId", "PlayId"])
-
-off_labels = [f'Off{i}' for i in range(10)]
-def_labels = [f'Def{i}' for i in range(11)]
-groups = data.groupby(['GameId', 'PlayId']).groups
-index = pd.MultiIndex.from_product([groups, off_labels, def_labels], names=['Play', 'Off', 'Def'])
-df = pd.DataFrame(index=index,
-                  columns=['DefSpeed', 'DefRusherXY', 'DefRusherSpeed',
-                           'OffDefXY', 'OffDefSpeed'])
+np.set_printoptions(suppress=True)
 
 
-def get_def_speed(x):
-    i = int(re.search(r'[0-9]+', x.name[2])[0])
-    return data.loc[x.name[0][0], x.name[0][1]]['DefenseS'][i]
+def main():
+    data = get_data()
+    data = standardized_play_direction(data)
+    data = combine_by_team(data)
+    df = create_features(data)
+    train_data, train_values = get_test_train_data(data, df)
+
+    num_test_plays = 10
+    model, num_test_plays = create_model(train_data, num_test_plays)
+
+    print('Training model')
+    start = datetime.datetime.now()
+    model.fit(train_data[:-num_test_plays], train_values[:-num_test_plays], epochs=50)
+    print(f'Finished in {datetime.datetime.now() - start}.\n')
+
+    print('Predicting')
+    pred = model.predict(train_data[-num_test_plays:])
+    print(f'Finished in {datetime.datetime.now() - start}.\n')
+
+    with open('predictions.txt', 'w') as f:
+        for p, a in zip(pred, train_values[-num_test_plays:]):
+            for (p1, a1, i) in zip(p, a, range(len(a))):
+                f.write('i: {: 3d}; Actual: {:f}; Predicted: {:f};\n'.format(i - 99, a1, p1))
+            f.write('\n')
+    print('predictions.txt wrote.')
 
 
-def get_def_rusher_xy(x):
-    i = int(re.search(r'[0-9]+', x.name[2])[0])
-    rusher_x = data.loc[x.name[0][0], x.name[0][1]]['RusherX']
-    rusher_y = data.loc[x.name[0][0], x.name[0][1]]['RusherY']
-    def_x = data.loc[x.name[0][0], x.name[0][1]]['DefenseX'][i]
-    def_y = data.loc[x.name[0][0], x.name[0][1]]['DefenseY'][i]
-    return math.sqrt((rusher_x - def_x) ** 2 + (rusher_y - def_y) ** 2)
+def create_model(train_data, num_test_plays):
+    print('Compiling model')
+    start = datetime.datetime.now()
+
+    def crps_loss_func(y_true, y_pred):
+        ret = tf.where(y_true >= 1, y_pred - 1, y_pred)
+        ret = K.square(ret)
+        per_play_loss = K.sum(ret, axis=1)
+        total_loss = K.mean(per_play_loss)
+        return total_loss
+
+    def max_avg_pool_2D(x):
+        return tf.keras.layers.MaxPooling2D(pool_size=(1, 10))(x) * .3 \
+               + tf.keras.layers.AveragePooling2D(pool_size=(1, 10))(x) * .7
+
+    def max_avg_pool_1D(x):
+        # Possibly change 10 back to 11 if change data shape
+        return tf.keras.layers.MaxPooling1D(pool_size=10)(x) * .3 \
+               + tf.keras.layers.AveragePooling1D(pool_size=10)(x) * .7
+
+    model = tf.keras.models.Sequential()
+    model.add(
+        tf.keras.layers.Conv2D(128, kernel_size=(1, 1), strides=(1, 1), activation='relu',
+                               input_shape=train_data[0].shape))
+    model.add(tf.keras.layers.Conv2D(160, kernel_size=(1, 1), strides=(1, 1), activation='relu'))
+    model.add(tf.keras.layers.Conv2D(128, kernel_size=(1, 1), strides=(1, 1), activation='relu'))
+    model.add(tf.keras.layers.Lambda(max_avg_pool_2D))
+    model.add(tf.keras.layers.Lambda(lambda x: K.squeeze(x, 2)))
+    model.add(tf.keras.layers.Conv1D(128, kernel_size=1, strides=1, activation='relu'))
+    model.add(tf.keras.layers.BatchNormalization())
+    model.add(tf.keras.layers.Conv1D(160, kernel_size=1, strides=1, activation='relu'))
+    model.add(tf.keras.layers.BatchNormalization())
+    model.add(tf.keras.layers.Lambda(max_avg_pool_1D))
+    model.add(tf.keras.layers.Lambda(lambda x: K.squeeze(x, 1)))
+    model.add(tf.keras.layers.Dense(96, activation='relu'))
+    model.add(tf.keras.layers.BatchNormalization())
+    model.add(tf.keras.layers.Dense(199, activation='softmax'))
+    model.compile(optimizer='adam', loss=crps_loss_func, metrics=['accuracy'])
+
+    print(f'Finished in {datetime.datetime.now() - start}.\n')
+    return model, num_test_plays
 
 
-def get_def_rusher_speed(x):
-    i = int(re.search(r'[0-9]+', x.name[2])[0])
-    rusher_speed = data.loc[x.name[0][0], x.name[0][1]]['RusherS']
-    def_speed = data.loc[x.name[0][0], x.name[0][1]]['DefenseS'][i]
-    return def_speed - rusher_speed
+def get_test_train_data(data, df):
+    print('Converting to training data')
+    start = datetime.datetime.now()
+
+    def convert_to_crps(yards):
+        y = [0 for i in range(115)]
+        for i in range(15 + yards, 115):
+            y[i] = 1
+        return np.pad(np.asarray(y, dtype='float'), (84, 0), constant_values=0)
+
+    unstack = df.unstack(-1)
+    num_plays = len(df.index.get_level_values(0).unique())
+    train_data = np.reshape(unstack.to_numpy(),
+                            (num_plays, 10, 10, 11))  # New dimensions = (num_plays, off, features, def)
+    train_values = np.asarray(
+        list(map(np.asarray, data.groupby(['GameId', 'PlayId']).first()["Yards"].apply(convert_to_crps).values)))
+
+    print(f'Finished in {datetime.datetime.now() - start}.\n')
+    return train_data, train_values
 
 
-def get_off_def_xy(x):
-    def_i = int(re.search(r'[0-9]+', x.name[2])[0])
-    off_i = int(re.search(r'[0-9]+', x.name[1])[0])
-    def_x = data.loc[x.name[0][0], x.name[0][1]]['DefenseX'][def_i]
-    off_x = data.loc[x.name[0][0], x.name[0][1]]['OffenseX'][off_i]
-    def_y = data.loc[x.name[0][0], x.name[0][1]]['DefenseY'][def_i]
-    off_y = data.loc[x.name[0][0], x.name[0][1]]['OffenseY'][off_i]
-    return math.sqrt((def_x - off_x) ** 2 + (def_y - off_y) ** 2)
+def create_features(data):
+    print('Creating features for each play')
+    start = datetime.datetime.now()
+
+    off_labels = [f'Off{i}' for i in range(10)]
+    def_labels = [f'Def{i}' for i in range(11)]
+    groups = data.groupby(['GameId', 'PlayId']).groups
+    index = pd.MultiIndex.from_product([groups, off_labels, def_labels], names=['Play', 'Off', 'Def'])
+    df = pd.DataFrame(index=index,
+                      columns=['DefSpeedX', 'DefSpeedY', 'DefRusherX', 'DefRusherY', 'DefRusherSpeedX',
+                               'DefRusherSpeedY', 'OffDefX', 'OffDefY', 'OffDefSpeedX', 'OffDefSpeedY'])
+
+    def get_def_speed(x, label):
+        i = int(re.search(r'[0-9]+', x.name[2])[0])
+        return data.loc[x.name[0][0], x.name[0][1]][f'DefenseS{label.lower()}'][i]
+
+    def get_def_rusher(x, label):
+        i = int(re.search(r'[0-9]+', x.name[2])[0])
+        r = data.loc[x.name[0][0], x.name[0][1]][f'Rusher{label.upper()}']
+        d = data.loc[x.name[0][0], x.name[0][1]][f'Defense{label.upper()}'][i]
+        return d - r
+
+    def get_def_rusher_speed(x, label):
+        i = int(re.search(r'[0-9]+', x.name[2])[0])
+        rusher_speed = data.loc[x.name[0][0], x.name[0][1]][f'RusherS{label.lower()}']
+        def_speed = data.loc[x.name[0][0], x.name[0][1]][f'DefenseS{label.lower()}'][i]
+        return def_speed - rusher_speed
+
+    def get_off_def(x, label):
+        def_i = int(re.search(r'[0-9]+', x.name[2])[0])
+        off_i = int(re.search(r'[0-9]+', x.name[1])[0])
+        d = data.loc[x.name[0][0], x.name[0][1]][f'Defense{label.upper()}'][def_i]
+        o = data.loc[x.name[0][0], x.name[0][1]][f'Offense{label.upper()}'][off_i]
+        return o - d
+
+    def get_off_def_speed(x, label):
+        def_i = int(re.search(r'[0-9]+', x.name[2])[0])
+        off_i = int(re.search(r'[0-9]+', x.name[1])[0])
+        off_speed = data.loc[x.name[0][0], x.name[0][1]][f'OffenseS{label.lower()}'][off_i]
+        def_speed = data.loc[x.name[0][0], x.name[0][1]][f'DefenseS{label.lower()}'][def_i]
+        return off_speed - def_speed
+
+    s = datetime.datetime.now()
+    df['DefSpeedX'] = df.apply(lambda x: get_def_speed(x, 'x'), axis=1)
+    print(f'DefSpeedX done {datetime.datetime.now() - s}.')
+    s = datetime.datetime.now()
+    df['DefSpeedY'] = df.apply(lambda x: get_def_speed(x, 'y'), axis=1)
+    print(f'DefSpeedY done {datetime.datetime.now() - s}.')
+    s = datetime.datetime.now()
+    df['DefRusherX'] = df.apply(lambda x: get_def_rusher(x, 'x'), axis=1)
+    print(f'DefRusherX done {datetime.datetime.now() - s}.')
+    s = datetime.datetime.now()
+    df['DefRusherY'] = df.apply(lambda x: get_def_rusher(x, 'y'), axis=1)
+    print(f'DefRusherY done {datetime.datetime.now() - s}.')
+    s = datetime.datetime.now()
+    df['DefRusherSpeedX'] = df.apply(lambda x: get_def_rusher_speed(x, 'x'), axis=1)
+    print(f'DefRusherSpeedX done {datetime.datetime.now() - s}.')
+    s = datetime.datetime.now()
+    df['DefRusherSpeedY'] = df.apply(lambda x: get_def_rusher_speed(x, 'y'), axis=1)
+    print(f'DefRusherSpeedY done {datetime.datetime.now() - s}.')
+    s = datetime.datetime.now()
+    df['OffDefX'] = df.apply(lambda x: get_off_def(x, 'x'), axis=1)
+    print(f'OffDefX done {datetime.datetime.now() - s}.')
+    s = datetime.datetime.now()
+    df['OffDefY'] = df.apply(lambda x: get_off_def(x, 'y'), axis=1)
+    print(f'OffDefY done {datetime.datetime.now() - s}.')
+    s = datetime.datetime.now()
+    df['OffDefSpeedX'] = df.apply(lambda x: get_off_def_speed(x, 'x'), axis=1)
+    print(f'OffDefSpeedX done {datetime.datetime.now() - s}.')
+    s = datetime.datetime.now()
+    df['OffDefSpeedY'] = df.apply(lambda x: get_def_speed(x, 'y'), axis=1)
+    print(f'OffDefSpeedY done {datetime.datetime.now() - s}.')
+
+    print(f'Finished in {datetime.datetime.now() - start}.\n')
+    return df
 
 
-def get_off_def_speed(x):
-    def_i = int(re.search(r'[0-9]+', x.name[2])[0])
-    off_i = int(re.search(r'[0-9]+', x.name[1])[0])
-    off_speed = data.loc[x.name[0][0], x.name[0][1]]['OffenseS'][off_i]
-    def_speed = data.loc[x.name[0][0], x.name[0][1]]['DefenseS'][def_i]
-    return off_speed - def_speed
+def combine_by_team(data):
+    print('Combining data by team and split into x,y components.')
+    start = datetime.datetime.now()
+    data = data.set_index(["GameId", "PlayId"])
+
+    offense = data['IsOffense'] & ~data['IsRusher']
+    rusher = data['IsRusher']
+    defense = ~data['IsOffense']
+
+    data['OffenseX'] = data.loc[offense].groupby(['GameId', 'PlayId'])['X_std'].apply(list)
+    data['OffenseY'] = data.loc[offense].groupby(['GameId', 'PlayId'])['Y_std'].apply(list)
+    data['OffenseSx'] = data.loc[offense].groupby(['GameId', 'PlayId'])['S_x'].apply(list)
+    data['OffenseSy'] = data.loc[offense].groupby(['GameId', 'PlayId'])['S_y'].apply(list)
+    data['RusherX'] = data.loc[rusher].groupby(['GameId', 'PlayId'])['X_std'].first()
+    data['RusherY'] = data.loc[rusher].groupby(['GameId', 'PlayId'])['Y_std'].first()
+    data['RusherSx'] = data.loc[rusher].groupby(['GameId', 'PlayId'])['S_x'].first()
+    data['RusherSy'] = data.loc[rusher].groupby(['GameId', 'PlayId'])['S_y'].first()
+    data['DefenseX'] = data.loc[defense].groupby(['GameId', 'PlayId'])['X_std'].apply(list)
+    data['DefenseY'] = data.loc[defense].groupby(['GameId', 'PlayId'])['Y_std'].apply(list)
+    data['DefenseSx'] = data.loc[defense].groupby(['GameId', 'PlayId'])['S_x'].apply(list)
+    data['DefenseSy'] = data.loc[defense].groupby(['GameId', 'PlayId'])['S_y'].apply(list)
+
+    data = data.reset_index().drop_duplicates(subset=['GameId', 'PlayId'], keep='first')
+    data = data.set_index(["GameId", "PlayId"])
+
+    print(f'Finished in {datetime.datetime.now() - start}.\n')
+    return data
 
 
-df['DefSpeed'] = df.apply(get_def_speed, axis=1)
-df['DefRusherXY'] = df.apply(get_def_rusher_xy, axis=1)
-df['DefRusherSpeed'] = df.apply(get_def_rusher_speed, axis=1)
-df['OffDefXY'] = df.apply(get_off_def_xy, axis=1)
-df['OffDefSpeed'] = df.apply(get_off_def_speed, axis=1)
+def standardized_play_direction(data):
+    print('Standardizing play direction')
+    start = datetime.datetime.now()
+
+    def get_is_rusher(x): return x['NflId'] == x['NflIdRusher']
+
+    def get_is_offense(x): return (x['Team'] == 'home') == (x['PossessionTeam'] == x['HomeTeamAbbr'])
+
+    def get_to_left(x): return x["PlayDirection"] == "left"
+
+    def get_x_std(x): return 120 - x["X"] - 10 if x["ToLeft"] else x["X"] - 10
+
+    def get_y_std(x): return 160 / 3 - x["Y"] if x["ToLeft"] else x["Y"]
+
+    def get_dir_std_1(x): return x["Dir"] + 360 if x["ToLeft"] and x["Dir"] < 90 else x["Dir"]
+
+    def get_dir_std_1_next(x): return x["Dir"] - 360 if (not x["ToLeft"]) and x["Dir"] > 270 else x["Dir_std_1"]
+
+    def get_dir_std_2(x): return x["Dir_std_1"] - 180 if x["ToLeft"] else x["Dir_std_1"]
+
+    def get_x_std_end(x): return x["S"] * math.cos((90 - x["Dir_std_2"]) * math.pi / 180) + x["X_std"]
+
+    def get_y_std_end(x): return x["S"] * math.sin((90 - x["Dir_std_2"]) * math.pi / 180) + x["Y_std"]
+
+    def get_s_x(x): return x["X_std_end"] - x["X_std"]
+
+    def get_s_y(x): return x["Y_std_end"] - x["Y_std"]
+
+    data["IsRusher"] = data.apply(get_is_rusher, axis=1)
+    data["IsOffense"] = data.apply(get_is_offense, axis=1)
+    data["ToLeft"] = data.apply(get_to_left, axis=1)
+    data["X_std"] = data.apply(get_x_std, axis=1)
+    data["Y_std"] = data.apply(get_y_std, axis=1)
+    data["Dir_std_1"] = data.apply(get_dir_std_1, axis=1)
+    data["Dir_std_1"] = data.apply(get_dir_std_1_next, axis=1)
+    data["Dir_std_2"] = data.apply(get_dir_std_2, axis=1)
+    data["X_std_end"] = data.apply(get_x_std_end, axis=1)
+    data["Y_std_end"] = data.apply(get_y_std_end, axis=1)
+    data["S_x"] = data.apply(get_s_x, axis=1)
+    data["S_y"] = data.apply(get_s_y, axis=1)
+
+    print(f'Finished in {datetime.datetime.now() - start}.\n')
+    return data
 
 
-def convert_to_crps(yards):
-    y = [0 for i in range(115)]
-    for i in range(15 + yards, 115):
-        y[i] = 1
-    return np.pad(np.asarray(y), (84, 0), constant_values=0)
+def get_data():
+    print('Reading csv.')
+    start = datetime.datetime.now()
+    data = pd.read_csv('train.csv')
+    keep_cols = ['GameId', 'PlayId', 'Team', 'X', 'Y', 'S', 'Dis', 'Orientation', 'Dir', 'NflId', 'PossessionTeam',
+                 'NflIdRusher', 'HomeTeamAbbr', 'VisitorTeamAbbr', 'Yards', 'PlayDirection']
+    data.drop([x for x in data.columns if x not in keep_cols], axis=1, inplace=True)
+    print(f'Finished in {datetime.datetime.now() - start}.\n')
+    return data
 
 
-unstack = df.unstack(-1)
-print(unstack[:10].to_string())
-num_plays = len(df.index.get_level_values(0).unique())
-train_data = np.reshape(unstack.to_numpy(),
-                        (num_plays, 10, 5, 11))  # New dimensions = (num_plays, off, features, def)
-train_values = np.asarray(
-    list(map(np.asarray, data.groupby(['GameId', 'PlayId']).first()["Yards"].apply(convert_to_crps).values)))
-print(train_data[0][0])  # Prints (off0, features, def)
-num_test_plays = 10
-
-
-def crps_loss_func(y_true, y_pred):
-    ret = tf.where(y_true >= 1, y_pred - 1, y_pred)
-    ret = K.square(ret)
-    per_play_loss = K.sum(ret, axis=1)
-    total_loss = K.mean(per_play_loss)
-    return total_loss
-
-
-def max_avg_pool_2D(x):
-    # Possibly change 5 back to 10 if change data shape
-    return tf.keras.layers.MaxPooling2D(pool_size=(1, 5))(x) * .3 \
-           + tf.keras.layers.AveragePooling2D(pool_size=(1, 5))(x) * .7
-
-
-def max_avg_pool_1D(x):
-    # Possibly change 10 back to 11 if change data shape
-    return tf.keras.layers.MaxPooling1D(pool_size=10)(x) * .3 \
-           + tf.keras.layers.AveragePooling1D(pool_size=10)(x) * .7
-
-
-model = tf.keras.models.Sequential()
-model.add(tf.keras.layers.Conv2D(128, kernel_size=(1, 1), strides=(1, 1), activation='relu', input_shape=train_data[0].shape))
-model.add(tf.keras.layers.Conv2D(160, kernel_size=(1, 1), strides=(1, 1), activation='relu'))
-model.add(tf.keras.layers.Conv2D(128, kernel_size=(1, 1), strides=(1, 1), activation='relu'))
-model.add(tf.keras.layers.Lambda(max_avg_pool_2D))
-model.add(tf.keras.layers.Lambda(lambda x: K.squeeze(x, 2)))
-model.add(tf.keras.layers.Conv1D(128, kernel_size=1, strides=1, activation='relu'))
-model.add(tf.keras.layers.BatchNormalization())
-model.add(tf.keras.layers.Conv1D(160, kernel_size=1, strides=1, activation='relu'))
-model.add(tf.keras.layers.BatchNormalization())
-model.add(tf.keras.layers.Lambda(max_avg_pool_1D))
-model.add(tf.keras.layers.Lambda(lambda x: K.squeeze(x, 1)))
-model.add(tf.keras.layers.Dense(96, activation='relu'))
-model.add(tf.keras.layers.BatchNormalization())
-model.add(tf.keras.layers.Dense(199, activation='softmax'))
-
-model.compile(optimizer='adam', loss=crps_loss_func, metrics=['accuracy'])
-model.fit(train_data[:-num_test_plays], train_values[:-num_test_plays], epochs=50)
-
-pred = model.predict(train_data[-num_test_plays:])
-print(f'pred: {pred}')
-print(f'actual: {train_values[-num_test_plays:] == 1}')
+main()
