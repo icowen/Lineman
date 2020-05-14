@@ -18,28 +18,30 @@ def main():
     data = combine_by_team(data)
     df = create_features(data)
     train_data, train_values = get_test_train_data(data, df)
+    np.savetxt(f'train_data{train_data.shape}.csv', train_data.flatten(), delimiter=',')
+    np.savetxt(f'train_values{train_values.shape}.csv', train_values.flatten(), delimiter=',')
 
-    num_test_plays = 10
-    model, num_test_plays = create_model(train_data, num_test_plays)
+    # num_test_plays = 10
+    # model = create_model(train_data)
+    #
+    # print('Training model')
+    # start = datetime.datetime.now()
+    # model.fit(train_data[:-num_test_plays], train_values[:-num_test_plays], epochs=50)
+    # print(f'Finished in {datetime.datetime.now() - start}.\n')
+    #
+    # print('Predicting')
+    # pred = model.predict(train_data[-num_test_plays:])
+    # print(f'Finished in {datetime.datetime.now() - start}.\n')
 
-    print('Training model')
-    start = datetime.datetime.now()
-    model.fit(train_data[:-num_test_plays], train_values[:-num_test_plays], epochs=50)
-    print(f'Finished in {datetime.datetime.now() - start}.\n')
-
-    print('Predicting')
-    pred = model.predict(train_data[-num_test_plays:])
-    print(f'Finished in {datetime.datetime.now() - start}.\n')
-
-    with open('predictions.txt', 'w') as f:
-        for p, a in zip(pred, train_values[-num_test_plays:]):
-            for (p1, a1, i) in zip(p, a, range(len(a))):
-                f.write('i: {: 3d}; Actual: {:f}; Predicted: {:f};\n'.format(i - 99, a1, p1))
-            f.write('\n')
-    print('predictions.txt wrote.')
+    # with open('predictions.txt', 'w') as f:
+    #     for p, a in zip(pred, train_values[-num_test_plays:]):
+    #         for (p1, a1, i) in zip(p, a, range(len(a))):
+    #             f.write('i: {: 3d}; Actual: {:f}; Predicted: {:f};\n'.format(i - 99, a1, p1))
+    #         f.write('\n')
+    # print('predictions.txt wrote.')
 
 
-def create_model(train_data, num_test_plays):
+def create_model(train_data):
     print('Compiling model')
     start = datetime.datetime.now()
 
@@ -79,7 +81,7 @@ def create_model(train_data, num_test_plays):
     model.compile(optimizer='adam', loss=crps_loss_func, metrics=['accuracy'])
 
     print(f'Finished in {datetime.datetime.now() - start}.\n')
-    return model, num_test_plays
+    return model
 
 
 def get_test_train_data(data, df):
