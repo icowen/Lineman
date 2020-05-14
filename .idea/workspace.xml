@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7910b418-ca29-4f02-b7b7-79e1bb5dcd4e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ConvolutionNet.py" beforeDir="false" afterPath="$PROJECT_DIR$/ConvolutionNet.py" afterDir="false" />
     </list>
@@ -316,7 +315,7 @@
       <workItem from="1588772422728" duration="28000" />
       <workItem from="1588794500646" duration="1767000" />
       <workItem from="1589206023821" duration="46990000" />
-      <workItem from="1589467183452" duration="524000" />
+      <workItem from="1589467183452" duration="6308000" />
     </task>
     <task id="LOCAL-00001" summary="Added tests">
       <created>1583686959042</created>
@@ -598,7 +597,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589379829464</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Did the data manipulation and saved that into files.">
+      <created>1589467748673</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1589467748673</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -621,7 +627,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/Lineman" />
     </ignored-roots>
-    <MESSAGE value="Changed batch size" />
     <MESSAGE value="10 epochs" />
     <MESSAGE value="-Using 10 epochs and 25 nodes in 2 layers.&#10;-Using new data.&#10;-Generates score graph for each player.&#10;-Saves end df to scores.csv.&#10;-Removed unneeded files." />
     <MESSAGE value="Squaring previous prediction - new prediction when calculating player score" />
@@ -646,7 +651,8 @@
     <MESSAGE value="Actually works this time... I think." />
     <MESSAGE value="Trying to use CNN now from winner of Big Data Bowl." />
     <MESSAGE value="CNN updates including:&#10;-Making all plays go left to right&#10;-Refactoring/extracting methods&#10;-Timing all processes&#10;-Printing predictions&#10;-Using x/y speed and position components" />
-    <option name="LAST_COMMIT_MESSAGE" value="CNN updates including:&#10;-Making all plays go left to right&#10;-Refactoring/extracting methods&#10;-Timing all processes&#10;-Printing predictions&#10;-Using x/y speed and position components" />
+    <MESSAGE value="Did the data manipulation and saved that into files." />
+    <option name="LAST_COMMIT_MESSAGE" value="Did the data manipulation and saved that into files." />
   </component>
   <component name="WindowStateProjectService">
     <state x="2472" y="181" key="#Plugins" timestamp="1587047622877">
@@ -666,10 +672,10 @@
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
     <state x="2610" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1589379837239" />
-    <state x="2330" y="118" width="1101" height="680" key="CommitChangelistDialog2" timestamp="1589379826551">
+    <state x="2330" y="118" width="1101" height="680" key="CommitChangelistDialog2" timestamp="1589467742187">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2330" y="118" key="CommitChangelistDialog2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1589379826551" />
+    <state x="2330" y="118" key="CommitChangelistDialog2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1589467742187" />
     <state x="137" y="0" width="1101" height="680" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1584656254086" />
     <state x="2102" y="81" width="1024" height="572" key="DiffContextDialog" timestamp="1586389040901">
       <screen x="1920" y="3" width="1920" height="1040" />
@@ -681,29 +687,29 @@
     </state>
     <state x="2552" y="148" key="FileChooserDialogImpl/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1589206879988" />
     <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1583771321633" />
-    <state width="1237" height="203" key="GridCell.Tab.0.bottom" timestamp="1589424704188">
+    <state width="1877" height="278" key="GridCell.Tab.0.bottom" timestamp="1589475206519">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
     <state width="1237" height="230" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.3.1920.1040@0.0.1280.680" timestamp="1589391218507" />
-    <state width="1237" height="203" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1589424704188" />
+    <state width="1877" height="278" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1589475206519" />
     <state width="1877" height="347" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587086358639" />
-    <state width="1237" height="203" key="GridCell.Tab.0.center" timestamp="1589424704188">
+    <state width="1877" height="278" key="GridCell.Tab.0.center" timestamp="1589475206519">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
     <state width="1237" height="230" key="GridCell.Tab.0.center/0.0.1280.680/1920.3.1920.1040@0.0.1280.680" timestamp="1589391218507" />
-    <state width="1237" height="203" key="GridCell.Tab.0.center/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1589424704188" />
+    <state width="1877" height="278" key="GridCell.Tab.0.center/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1589475206519" />
     <state width="1877" height="347" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1587086358639" />
-    <state width="1237" height="203" key="GridCell.Tab.0.left" timestamp="1589424704187">
+    <state width="1877" height="278" key="GridCell.Tab.0.left" timestamp="1589475206518">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
     <state width="1237" height="230" key="GridCell.Tab.0.left/0.0.1280.680/1920.3.1920.1040@0.0.1280.680" timestamp="1589391218506" />
-    <state width="1237" height="203" key="GridCell.Tab.0.left/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1589424704187" />
+    <state width="1877" height="278" key="GridCell.Tab.0.left/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1589475206518" />
     <state width="1877" height="347" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1587086358639" />
-    <state width="1237" height="203" key="GridCell.Tab.0.right" timestamp="1589424704188">
+    <state width="1877" height="278" key="GridCell.Tab.0.right" timestamp="1589475206519">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
     <state width="1237" height="230" key="GridCell.Tab.0.right/0.0.1280.680/1920.3.1920.1040@0.0.1280.680" timestamp="1589391218507" />
-    <state width="1237" height="203" key="GridCell.Tab.0.right/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1589424704188" />
+    <state width="1877" height="278" key="GridCell.Tab.0.right/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1589475206519" />
     <state width="1877" height="347" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1587086358639" />
     <state x="2133" y="3" key="SettingsEditor" timestamp="1587066336332">
       <screen x="1920" y="3" width="1920" height="1040" />
@@ -750,6 +756,6 @@
     <SUITE FILE_PATH="coverage/Linesman$Find_best_net_configuration.coverage" NAME="Find best net configuration Coverage Results" MODIFIED="1586098774347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Linesman$Run_Net.coverage" NAME="Run Net Coverage Results" MODIFIED="1587936113360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Linesman$playground.coverage" NAME="playground Coverage Results" MODIFIED="1587047474312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Linesman$Convolutional.coverage" NAME="Convolutional Coverage Results" MODIFIED="1589391218492" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Linesman$Convolutional.coverage" NAME="Convolutional Coverage Results" MODIFIED="1589475206489" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

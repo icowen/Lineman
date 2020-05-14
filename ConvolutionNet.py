@@ -13,32 +13,35 @@ np.set_printoptions(suppress=True)
 
 
 def main():
-    data = get_data()
-    data = standardized_play_direction(data)
-    data = combine_by_team(data)
-    df = create_features(data)
-    train_data, train_values = get_test_train_data(data, df)
-    np.savetxt(f'train_data{train_data.shape}.csv', train_data.flatten(), delimiter=',')
-    np.savetxt(f'train_values{train_values.shape}.csv', train_values.flatten(), delimiter=',')
+    # data = get_data()
+    # data = standardized_play_direction(data)
+    # data = combine_by_team(data)
+    # df = create_features(data)
+    # train_data, train_values = get_test_train_data(data, df)
+    # np.savetxt(f'train_data{train_data.shape}.csv', train_data.flatten(), delimiter=',')
+    # np.savetxt(f'train_values{train_values.shape}.csv', train_values.flatten(), delimiter=',')
 
-    # num_test_plays = 10
-    # model = create_model(train_data)
-    #
-    # print('Training model')
-    # start = datetime.datetime.now()
-    # model.fit(train_data[:-num_test_plays], train_values[:-num_test_plays], epochs=50)
-    # print(f'Finished in {datetime.datetime.now() - start}.\n')
-    #
-    # print('Predicting')
-    # pred = model.predict(train_data[-num_test_plays:])
-    # print(f'Finished in {datetime.datetime.now() - start}.\n')
+    train_data = np.genfromtxt('train_data(31007, 10, 10, 11).csv', delimiter=',').reshape((31007, 10, 10, 11))[:10]
+    train_values = np.genfromtxt('train_values(31007, 199).csv', delimiter=',').reshape((31007, 199))[:10]
 
-    # with open('predictions.txt', 'w') as f:
-    #     for p, a in zip(pred, train_values[-num_test_plays:]):
-    #         for (p1, a1, i) in zip(p, a, range(len(a))):
-    #             f.write('i: {: 3d}; Actual: {:f}; Predicted: {:f};\n'.format(i - 99, a1, p1))
-    #         f.write('\n')
-    # print('predictions.txt wrote.')
+    num_test_plays = 10
+    model = create_model(train_data)
+
+    print('Training model')
+    start = datetime.datetime.now()
+    model.fit(train_data[:-num_test_plays], train_values[:-num_test_plays], epochs=50)
+    print(f'Finished in {datetime.datetime.now() - start}.\n')
+
+    print('Predicting')
+    pred = model.predict(train_data[-num_test_plays:])
+    print(f'Finished in {datetime.datetime.now() - start}.\n')
+
+    with open('predictions.txt', 'w') as f:
+        for p, a in zip(pred, train_values[-num_test_plays:]):
+            for (p1, a1, i) in zip(p, a, range(len(a))):
+                f.write('i: {: 3d}; Actual: {:f}; Predicted: {:f};\n'.format(i - 99, a1, p1))
+            f.write('\n')
+    print('predictions.txt wrote.')
 
 
 def create_model(train_data):
@@ -69,13 +72,19 @@ def create_model(train_data):
     model.add(tf.keras.layers.Conv2D(128, kernel_size=(1, 1), strides=(1, 1), activation='relu'))
     model.add(tf.keras.layers.Lambda(max_avg_pool_2D))
     model.add(tf.keras.layers.Lambda(lambda x: K.squeeze(x, 2)))
-    model.add(tf.keras.layers.Conv1D(128, kernel_size=1, strides=1, activation='relu'))
     model.add(tf.keras.layers.BatchNormalization())
     model.add(tf.keras.layers.Conv1D(160, kernel_size=1, strides=1, activation='relu'))
+    model.add(tf.keras.layers.BatchNormalization())
+    model.add(tf.keras.layers.Conv1D(96, kernel_size=1, strides=1, activation='relu'))
+    model.add(tf.keras.layers.BatchNormalization())
+    model.add(tf.keras.layers.Conv1D(96, kernel_size=1, strides=1, activation='relu'))
     model.add(tf.keras.layers.BatchNormalization())
     model.add(tf.keras.layers.Lambda(max_avg_pool_1D))
     model.add(tf.keras.layers.Lambda(lambda x: K.squeeze(x, 1)))
     model.add(tf.keras.layers.Dense(96, activation='relu'))
+    model.add(tf.keras.layers.BatchNormalization())
+    model.add(tf.keras.layers.Dense(256, activation='relu'))
+    model.add(tf.keras.layers.Dropout(.3))
     model.add(tf.keras.layers.BatchNormalization())
     model.add(tf.keras.layers.Dense(199, activation='softmax'))
     model.compile(optimizer='adam', loss=crps_loss_func, metrics=['accuracy'])
