@@ -27,14 +27,15 @@ def main():
     train_data = np.genfromtxt('train_data(31007, 10, 10, 11).csv', delimiter=',').reshape((31007, 10, 10, 11))
     print('reading values')
     train_values = np.genfromtxt('train_values(31007, 199).csv', delimiter=',').reshape((31007, 199))
+    train_values[np.isnan(train_values)] = 0
     print(np.argwhere(np.isnan(train_data)))
     print(np.argwhere(np.isnan(train_values)))
-    # model = create_model(train_data)
-    # print('Training model')
-    # start = datetime.datetime.now()
-    # model.fit(train_data[:-num_test_plays], train_values[:-num_test_plays], epochs=50)
-    # model.save(f'model')
-    # print(f'Finished in {datetime.datetime.now() - start}.\n')
+    model = create_model(train_data)
+    print('Training model')
+    start = datetime.datetime.now()
+    model.fit(train_data[:-num_test_plays], train_values[:-num_test_plays], epochs=50)
+    model.save(f'model')
+    print(f'Finished in {datetime.datetime.now() - start}.\n')
     # first = True
     # for f in listdir('data'):
     #     if 'train_data' in f:

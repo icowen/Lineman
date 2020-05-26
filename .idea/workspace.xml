@@ -321,7 +321,7 @@
       <workItem from="1590165795867" duration="601000" />
       <workItem from="1590241767790" duration="7354000" />
       <workItem from="1590257999102" duration="44000" />
-      <workItem from="1590502454782" duration="5184000" />
+      <workItem from="1590502454782" duration="6480000" />
     </task>
     <task id="LOCAL-00001" summary="Added tests">
       <created>1583686959042</created>
@@ -631,7 +631,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590522188824</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Test to see if any data is nan">
+      <created>1590522910239</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1590522910239</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -654,7 +661,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/Lineman" />
     </ignored-roots>
-    <MESSAGE value="Squaring previous prediction - new prediction when calculating player score" />
     <MESSAGE value="Squaring the whole score" />
     <MESSAGE value="Get sum of score for all players" />
     <MESSAGE value="Need to use all data" />
@@ -679,7 +685,8 @@
     <MESSAGE value="Did the data manipulation and saved that into files." />
     <MESSAGE value="Trying to run net now... something is still wrong." />
     <MESSAGE value="Running net using old data" />
-    <option name="LAST_COMMIT_MESSAGE" value="Running net using old data" />
+    <MESSAGE value="Test to see if any data is nan" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test to see if any data is nan" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2472" y="181" key="#Plugins" timestamp="1587047622877">
@@ -699,10 +706,10 @@
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
     <state x="2610" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1589379837239" />
-    <state x="2330" y="118" width="1101" height="680" key="CommitChangelistDialog2" timestamp="1590522184433">
+    <state x="2330" y="118" width="1101" height="680" key="CommitChangelistDialog2" timestamp="1590522907401">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2330" y="118" key="CommitChangelistDialog2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1590522184433" />
+    <state x="2330" y="118" key="CommitChangelistDialog2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1590522907401" />
     <state x="137" y="0" width="1101" height="680" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1584656254086" />
     <state x="2102" y="81" width="1024" height="572" key="DiffContextDialog" timestamp="1586389040901">
       <screen x="1920" y="3" width="1920" height="1040" />
@@ -743,10 +750,10 @@
     </state>
     <state x="2133" y="3" key="SettingsEditor/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1587066336332" />
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1583510434281" />
-    <state x="2270" y="116" key="Vcs.Push.Dialog.v2" timestamp="1590522198044">
+    <state x="2270" y="116" key="Vcs.Push.Dialog.v2" timestamp="1590522913802">
       <screen x="1920" y="3" width="1920" height="1040" />
     </state>
-    <state x="2270" y="116" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1590522198044" />
+    <state x="2270" y="116" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.3.1920.1040@1920.3.1920.1040" timestamp="1590522913802" />
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1584633146119" />
     <state x="337" y="165" width="598" height="352" key="com.intellij.ide.util.TipDialog" timestamp="1590258001887">
       <screen x="0" y="0" width="1280" height="680" />
