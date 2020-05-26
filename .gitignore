@@ -12,3 +12,5 @@ scratch*
 netdata_with_ball.csv
 train_data(31007, 10, 10, 11).csv
 train_values(31007, 199).csv
+data/
+data_zip.zip

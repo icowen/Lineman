@@ -2,6 +2,8 @@ import datetime
 import math
 import re
 import sys
+from os import listdir
+from os.path import isfile, join
 
 import numpy as np
 import pandas as pd
@@ -16,32 +18,52 @@ def main():
     # data = get_data()
     # data = standardized_play_direction(data)
     # data = combine_by_team(data)
+    # data = data[22977:]
     # df = create_features(data)
     # train_data, train_values = get_test_train_data(data, df)
-    # np.savetxt(f'train_data{train_data.shape}.csv', train_data.flatten(), delimiter=',')
-    # np.savetxt(f'train_values{train_values.shape}.csv', train_values.flatten(), delimiter=',')
+    # for i in range(32):
+    #     np.savetxt(f'data/train_data{train_data[i:i*1000].shape}_starting_at_22977.csv', train_data[i:i*1000].flatten(), delimiter=',')
+    #     np.savetxt(f'data/train_values{train_values[i:i*1000].shape}_starting_at_22977.csv', train_values[i:i*1000].flatten(), delimiter=',')
 
-    train_data = np.genfromtxt('train_data(31007, 10, 10, 11).csv', delimiter=',').reshape((31007, 10, 10, 11))[:10]
-    train_values = np.genfromtxt('train_values(31007, 199).csv', delimiter=',').reshape((31007, 199))[:10]
+    first = True
+    for f in listdir('data'):
+        if 'train_data' in f:
+            if 'starting' in f:
+                data = re.search(r'\(.*(?=\.)', f).group()
+                value_file = f'data/train_values({data.split(", ")[0][1:]}, 199)_starting_at_22977.csv'
+            else:
+                data = re.search(r'\(.*\)', f).group()
+                value_file = f'data/train_values({data.split(", ")[0][1:]}, 199).csv'
+            data_file = f'data/train_data{data}.csv'
+            print(f'data: {data}')
+            print(f'data_file: {data_file}')
+            print(f'value_file: {value_file}')
+            train_data = np.genfromtxt(data_file, delimiter=',')
+            train_data = train_data.reshape((int(len(train_data)/10/10/11), 10, 10, 11))
+            train_values = np.genfromtxt(value_file, delimiter=',')
+            train_values = train_values.reshape((int(len(train_values)/199), 199))
 
-    num_test_plays = 10
-    model = create_model(train_data)
+            num_test_plays = 10
+            if first:
+                model = create_model(train_data)
+                first = False
 
-    print('Training model')
-    start = datetime.datetime.now()
-    model.fit(train_data[:-num_test_plays], train_values[:-num_test_plays], epochs=50)
-    print(f'Finished in {datetime.datetime.now() - start}.\n')
-
-    print('Predicting')
-    pred = model.predict(train_data[-num_test_plays:])
-    print(f'Finished in {datetime.datetime.now() - start}.\n')
-
-    with open('predictions.txt', 'w') as f:
-        for p, a in zip(pred, train_values[-num_test_plays:]):
-            for (p1, a1, i) in zip(p, a, range(len(a))):
-                f.write('i: {: 3d}; Actual: {:f}; Predicted: {:f};\n'.format(i - 99, a1, p1))
-            f.write('\n')
-    print('predictions.txt wrote.')
+            print('Training model')
+            start = datetime.datetime.now()
+            model.fit(train_data[:-num_test_plays], train_values[:-num_test_plays], epochs=50)
+            model.save(f'model_after_data{data}')
+            print(f'Finished in {datetime.datetime.now() - start}.\n')
+    #
+    # print('Predicting')
+    # pred = model.predict(train_data[-num_test_plays:])
+    # print(f'Finished in {datetime.datetime.now() - start}.\n')
+    #
+    # with open('predictions.txt', 'w') as f:
+    #     for p, a in zip(pred, train_values[-num_test_plays:]):
+    #         for (p1, a1, i) in zip(p, a, range(len(a))):
+    #             f.write('i: {: 3d}; Actual: {:f}; Predicted: {:f};\n'.format(i - 99, a1, p1))
+    #         f.write('\n')
+    # print('predictions.txt wrote.')
 
 
 def create_model(train_data):
@@ -105,8 +127,9 @@ def get_test_train_data(data, df):
 
     unstack = df.unstack(-1)
     num_plays = len(df.index.get_level_values(0).unique())
-    train_data = np.reshape(unstack.to_numpy(),
-                            (num_plays, 10, 10, 11))  # New dimensions = (num_plays, off, features, def)
+    train_data = np.reshape(unstack.to_numpy(), (num_plays, 10, 10, 11))
+    # New dimensions: (num_plays, off, features, def)
+
     train_values = np.asarray(
         list(map(np.asarray, data.groupby(['GameId', 'PlayId']).first()["Yards"].apply(convert_to_crps).values)))
 
