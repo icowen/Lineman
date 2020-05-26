@@ -27,8 +27,8 @@ def main():
     train_data = np.genfromtxt('train_data(31007, 10, 10, 11).csv', delimiter=',').reshape((31007, 10, 10, 11))
     print('reading values')
     train_values = np.genfromtxt('train_values(31007, 199).csv', delimiter=',').reshape((31007, 199))
-    train_values[np.isnan(train_values)] = 0
-    np.savetxt(f'train_values{train_values.shape}_without_nans.csv', train_values.flatten(), delimiter=',')
+    train_data[np.isnan(train_data)] = 0
+    np.savetxt(f'train_data{train_data.shape}_without_nans.csv', train_data.flatten(), delimiter=',')
     print(np.argwhere(np.isnan(train_data)))
     print(np.argwhere(np.isnan(train_values)))
     model = create_model(train_data)
